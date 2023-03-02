@@ -45,6 +45,13 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+gem "redis", "~> 4.0"
+
+gem "sidekiq", "~>6.0.0"
+
+gem 'trestle'
+
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
