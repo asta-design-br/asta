@@ -13,7 +13,7 @@ alias app-start='sh start.sh' #  run every time you want to start the app.
                               # It will run migrations and gem or packegesinstalations
 ```
 
-To run commands inside your container, you can run `dexec`, passing the container name as first parameter and the command at the end. 
+To run commands inside your container, you can run `dexec`, passing the container name as first parameter and the command at the end.
 > :rotating_light: **Alert:** Don't forget the quotes!
 
 Exemples:
@@ -44,6 +44,17 @@ Navigate into the new directory
 
 ```bash
 cd asta
+```
+
+Paste in the terminal all at once and press enter:
+
+```bash
+touch .env && \
+echo "DATABASE_NAME=asta_development" > .env && \
+echo "DATABASE_USER=postgres" >> .env && \
+echo "DATABASE_PASSWORD=docker" >> .env && \
+echo "DATABASE_HOST=db" >> .env && \
+echo "REDIS_HOST=redis" >> .env
 ```
 
 If the docker is installed, you can build the enviroment and create the development database by running
