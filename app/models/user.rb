@@ -6,17 +6,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, :profile, presence: true
-  validate :check_full_name
-  # validate :check_username
-  # validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  # validates :profile ??
-  # validates :document, :check_document
+  validates :full_name, :username, presence: true
+  validate :check_full_name, :check_username, :check_document
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :profile, length: { within: 30..500 }
 
   def check_full_name
     regex = /^([a-zA-Z])+(\s([a-zA-Z])+)+$/
-    p full_name.strip =~ regex
-    return if full_name.strip =~ regex
+    return if full_name.nil? || full_name.strip =~ regex
 
     errors.add(
       :full_name,
@@ -24,22 +21,22 @@ class User < ApplicationRecord
     )
   end
 
-  # def check_username
-  #   regex = /^([a-z]|_)+$/
-  #   return if username.strip =~ regex
+  def check_username
+    regex = /^([a-z]|_)+$/
+    return if username.nil? || username.strip =~ regex
 
-  #   errors.add(
-  #     :username,
-  #     "Should contain downcase letters and underscore."
-  #   )
-  # end
+    errors.add(
+      :username,
+      "Should contain downcase letters and underscore."
+    )
+  end
 
-  # def check_document
-  #   return if CPF.valid?(:document)
+  def check_document
+    return if document.nil? || CPF.valid?(document)
 
-  #   errors.add(
-  #     :document,
-  #     "Should be a CPF or CNPJ valid number."
-  #   )
-  # end
+    errors.add(
+      :document,
+      "Should be a CPF or CNPJ valid number."
+    )
+  end
 end
