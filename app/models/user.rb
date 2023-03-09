@@ -1,25 +1,45 @@
+require "cpf_cnpj"
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :full_name, :username, :email, :profile, presence: true
-  validates :full_name, length: { minimum: 2, message: "Need name and surname" }
-  validates :username, :username_cannot_have_space_or_accent
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :username, :profile, presence: true
+  validate :check_full_name
+  # validate :check_username
+  # validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  # validates :profile ??
+  # validates :document, :check_document
 
+  def check_full_name
+    regex = /^([a-zA-Z])+(\s([a-zA-Z])+)+$/
+    p full_name.strip =~ regex
+    return if full_name.strip =~ regex
 
-  validate :expiration_date_cannot_be_in_the_past,
-  :discount_cannot_be_greater_than_total_value
-
-  def username_cannot_have_space_or_accent
-    special = "?<>',?[]}{=-)(*&^%$#`~{}"
-    regex = /[#{special.gsub(/./){|char|"\\#{char}"}}]/
-    if username.match(" ") || username =~ regex
-      errors.add(:expiration_date, "can't be in the past")
-    end
+    errors.add(
+      :full_name,
+      "Should contain a name and surname."
+    )
   end
 
+  # def check_username
+  #   regex = /^([a-z]|_)+$/
+  #   return if username.strip =~ regex
 
+  #   errors.add(
+  #     :username,
+  #     "Should contain downcase letters and underscore."
+  #   )
+  # end
+
+  # def check_document
+  #   return if CPF.valid?(:document)
+
+  #   errors.add(
+  #     :document,
+  #     "Should be a CPF or CNPJ valid number."
+  #   )
+  # end
 end
