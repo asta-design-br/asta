@@ -47,7 +47,7 @@ gem "sassc-rails"
 
 gem "redis", "~> 4.0"
 
-gem "sidekiq", "~>6.0.0"
+gem "sidekiq", ">= 6.4.0"
 
 gem 'trestle'
 
