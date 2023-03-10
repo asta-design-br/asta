@@ -45,9 +45,9 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
-gem "redis", "~> 4.0"
+# gem "redis", "~> 4.0"
 
-gem "sidekiq", ">= 6.4.0"
+# gem "sidekiq", ">= 6.4.0"
 
 gem 'trestle'
 
