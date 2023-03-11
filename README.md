@@ -4,24 +4,34 @@ First, if you don't have the Docker installed, you can do it clicking [here](htt
 
 While you wait the download, let's create some aliases to help you with most repetitive commands
 ```bash
-dexec() {
-    docker exec -it $1 sh -c $2
+asta() {
+    docker compose exec -it web sh -c "$*"
+}
+rasta() {
+    docker compose exec -it web sh -c "rails $*"
 }
 alias ownership='sudo chown -R $USER:$USER .' # run it if you see a permission denied error
 alias app-init='sh init.sh' # run to create the enviroment
 alias app-start='sh start.sh' #  run every time you want to start the app.
-                              # It will run migrations and gem or packegesinstalations
+                              # It will run migrations and gem or packege instalations
 ```
 
-To run commands inside your container, you can run `dexec`, passing the container name as first parameter and the command at the end.
-> :rotating_light: **Alert:** Don't forget the quotes!
+To run commands inside your container, you can run `asta`, and the command at the end.
 
 Exemples:
 ```bash
-dexec container-name 'rails db:create db:migrate db:seed'
+asta bundle install
 ```
 ```bash
-dexec container-name 'rails c'
+asta yarn build --watch
+```
+
+To run rails commands, you can run `rasta` and then the rails command. Just like this:
+```
+rasta db:drop db:create db:migrate db:seed
+``` 
+```
+rasta c
 ```
 
 If you are running Docker on Linux, the files `rails new` created are owned by
