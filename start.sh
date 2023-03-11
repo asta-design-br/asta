@@ -1,7 +1,8 @@
 #!bin/bash
-set -vx
+set -v
 
-docker start asta-web-1
-docker start asta-db-1
-docker exec -d asta-web-1 sh -c "rails db:migrate db:seed && yarn install && yarn build --watch"
-docker-compose up -d
+echo "removing all containers..."
+docker ps -aq | xargs docker stop | xargs docker rm
+
+bundle install
+docker-compose up
