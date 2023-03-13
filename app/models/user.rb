@@ -7,9 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :full_name, :username, presence: true
-  validate :check_full_name, :check_username, :check_document
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :profile, length: { within: 30..500 }
+
+  validate :check_full_name, :check_username, :check_document
 
   def check_full_name
     regex = /^([a-zA-Z])+(\s([a-zA-Z])+)+$/
