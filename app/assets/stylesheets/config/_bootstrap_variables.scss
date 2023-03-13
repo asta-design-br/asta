@@ -11,12 +11,19 @@ $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$body-color: $dark-gray;
+$primary:    $gray;
+$info:       $lighter-gray;
+$success:    $teal;
+$basic:      $white;
+$cheerful:   $pink;
+$cosy:       $navy;
+
+// $primary:    $blue;
+// $success:    $green;
+// $info:       $yellow;
+// $danger:     $red;
+// $warning:    $orange;
 
 // Buttons & inputs' radius
 $border-radius:    2px;
