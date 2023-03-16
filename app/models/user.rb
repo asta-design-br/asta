@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
     errors.add(
       :full_name,
-      "Should contain a name and surname."
+      "should contain a name and surname."
     )
   end
 
@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
     errors.add(
       :username,
-      "Should contain downcase letters and underscore."
+      "should contain downcase letters and underscore."
     )
   end
 
@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
     errors.add(
       :document,
-      "Should be a CPF or CNPJ valid number."
+      "should be a CPF or CNPJ valid number."
     )
   end
 end
