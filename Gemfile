@@ -64,6 +64,9 @@ gem 'font-awesome-sass', '~> 6.1'
 # Build forms
 gem 'simple_form', github: 'heartcombo/simple_form'
 
+# Better prints
+gem 'awesome_print'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'capybara'
