@@ -51,6 +51,9 @@ gem 'sassc-rails'
 
 gem 'trestle'
 
+# CPF and CNPJ validation
+gem 'cpf_cnpj', '~> 0.2.1'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2'
 
