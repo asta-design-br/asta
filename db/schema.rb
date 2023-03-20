@@ -14,11 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_183842) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_03_09_132842) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -51,7 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_09_132842) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-   end
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
