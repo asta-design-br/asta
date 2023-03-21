@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   validate :check_full_name, :check_username, :check_document
 
+  has_many :user_roles
+  has_many :roles, through: :user_roles
+
   def check_full_name
     regex = /^([a-zA-Z])+(\s([a-zA-Z])+)+$/
     return if full_name.nil? || full_name.strip =~ regex
