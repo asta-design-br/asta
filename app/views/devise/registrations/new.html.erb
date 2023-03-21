@@ -7,7 +7,18 @@
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" } %>
+    <%= f.input :full_name,
+                required: true,
+                input_html: { autocomplete: "full_name" } %>
+    <%= f.input :username,
+                required: true,
+                input_html: { autocomplete: "username" } %>
+    <%= f.input :profile,
+                required: true %>
+    <%= f.input :document,
+                required: false,
+                input_html: { autocomplete: "document" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
