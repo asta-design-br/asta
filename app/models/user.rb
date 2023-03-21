@@ -1,12 +1,10 @@
-require "cpf_cnpj"
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :address, as: :addressable
+  has_many :addresses, as: :addressable
 
   validates :full_name, :username, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -20,7 +18,7 @@ class User < ApplicationRecord
 
     errors.add(
       :full_name,
-      "should contain a name and surname."
+      'should contain a name and surname.'
     )
   end
 
@@ -30,7 +28,7 @@ class User < ApplicationRecord
 
     errors.add(
       :username,
-      "should contain downcase letters and underscore."
+      'should contain downcase letters and underscore.'
     )
   end
 
@@ -39,7 +37,7 @@ class User < ApplicationRecord
 
     errors.add(
       :document,
-      "should be a CPF or CNPJ valid number."
+      'should be a CPF or CNPJ valid number.'
     )
   end
 end
