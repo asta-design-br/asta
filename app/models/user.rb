@@ -1,6 +1,6 @@
-require "cpf_cnpj"
-
 class User < ApplicationRecord
+  include Phonable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,13 +12,15 @@ class User < ApplicationRecord
 
   validate :check_full_name, :check_username, :check_document
 
+  private
+
   def check_full_name
     regex = /^([a-zA-Z])+(\s([a-zA-Z])+)+$/
     return if full_name.nil? || full_name.strip =~ regex
 
     errors.add(
       :full_name,
-      "should contain a name and surname."
+      'should contain a name and surname.'
     )
   end
 
@@ -28,7 +30,7 @@ class User < ApplicationRecord
 
     errors.add(
       :username,
-      "should contain downcase letters and underscore."
+      'should contain downcase letters and underscore.'
     )
   end
 
@@ -37,7 +39,7 @@ class User < ApplicationRecord
 
     errors.add(
       :document,
-      "should be a CPF or CNPJ valid number."
+      'should be a CPF or CNPJ valid number.'
     )
   end
 end
