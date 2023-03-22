@@ -8,7 +8,7 @@ class Phone < ApplicationRecord
   private
 
   def check_number
-    regex = /^\(?0?[1-9]{2}\)?\s?([0-9]{4,5})([0-9]{4})$/
+    regex = /\(?0?[1-9]{2}\)?\s?(\d{4,5})(\d{4})/
     return if number.nil? || number.strip =~ regex
 
     errors.add(
@@ -18,7 +18,7 @@ class Phone < ApplicationRecord
   end
 
   def check_country_code
-    regex =
+    regex = /(^\+\d{2})?/
     return if country_code.nil? || country_code.strip =~ regex
 
     errors.add(
