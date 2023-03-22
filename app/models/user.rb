@@ -1,6 +1,6 @@
 class User < ApplicationRecord
+  include AstaAddressable
   include Phonable
-  include Addressable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

@@ -1,4 +1,4 @@
-module Addressable
+module AstaAddressable
   extend ActiveSupport::Concern
 
   def self.included(base = nil, &)
