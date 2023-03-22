@@ -80,7 +80,7 @@ Address.create!(
   neighborhood: 'Portal do Sol 1',
   city: 'Goiânia',
   state: 'GO',
-  addressable: designer
+  asta_addressable: designer
 )
 
 puts 'creating address...'
@@ -90,7 +90,7 @@ Address.create!(
   neighborhood: 'Ahú',
   city: 'Curitiba',
   state: 'PR',
-  addressable: producer
+  asta_addressable: producer
 )
 
 puts 'Fim'
