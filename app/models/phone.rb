@@ -3,7 +3,7 @@ class Phone < ApplicationRecord
 
   validates :number, :country_code, presence: true
 
-  validate :check_number
+  validate :check_number, :check_country_code
 
   private
 
