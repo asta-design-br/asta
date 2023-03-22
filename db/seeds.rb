@@ -93,4 +93,11 @@ Address.create!(
   addressable: producer
 )
 
+puts 'creating phone number...'
+Phone.create!(
+  country_code: '+55',
+  number: '62984279962',
+  phonable: producer
+)
+
 puts 'Fim'
