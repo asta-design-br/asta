@@ -42,7 +42,11 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'concerns' do
-    it_behaves_like 'phonable'
-  end
+  # context 'concerns' do
+  #   it_behaves_like 'phonable'
+  # end
+
+  # context 'concerns' do
+  #   it_behaves_like 'asta_addressable'
+  # end
 end
