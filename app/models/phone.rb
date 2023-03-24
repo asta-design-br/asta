@@ -18,7 +18,7 @@ class Phone < ApplicationRecord
   end
 
   def check_country_code
-    regex = /(^\+\d{2})?/
+    regex = /(^\+\d{2})/
     return if country_code.nil? || country_code.strip =~ regex
 
     errors.add(

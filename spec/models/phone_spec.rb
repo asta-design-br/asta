@@ -16,10 +16,22 @@ RSpec.describe Phone, type: :model do
       expect(@phone.errors[:number]).to include("can't be blank")
     end
 
+    it 'should have a valid phone number' do
+      @phone.number = '98556'
+      expect(@phone).to_not be_valid
+      expect(@phone.errors[:number]).to include('should contain a valid phone number.')
+    end
+
     it 'should have a country code' do
       @phone.country_code = nil
       expect(@phone).to_not be_valid
       expect(@phone.errors[:country_code]).to include("can't be blank")
+    end
+
+    it 'should have a valid country code' do
+      @phone.country_code = '55'
+      expect(@phone).to_not be_valid
+      expect(@phone.errors[:country_code]).to include('should contain a valid country code.')
     end
 
     it 'should have a phonable associated' do
