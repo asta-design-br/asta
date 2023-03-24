@@ -40,10 +40,16 @@ RSpec.describe Address, type: :model do
       expect(@address.errors[:state]).to include("can't be blank")
     end
 
+    it 'should have a valid state' do
+      @address.state = 'Goiás'
+      expect(@address).to_not be_valid
+      expect(@address.errors[:state]).to include('is the wrong length (should be 2 characters)')
+    end
+
     it 'should have an addressable associated' do
       @address.asta_addressable = nil
       expect(@address).to_not be_valid
-      expect(@address.errors[:asta_addressable]).to include("must exist")
+      expect(@address.errors[:asta_addressable]).to include('must exist')
     end
   end
 end
