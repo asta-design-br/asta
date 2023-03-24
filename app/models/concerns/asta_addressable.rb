@@ -12,6 +12,6 @@ module AstaAddressable
   end
 
   included do
-    has_many :addresses, as: :addressable, dependent: :destroy
+    has_many :addresses, as: :asta_addressable, dependent: :destroy
   end
 end
