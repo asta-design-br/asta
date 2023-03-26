@@ -25,14 +25,13 @@ puts 'creating roles...'
   )
 end
 
-puts 'creating user...'
+puts 'creating users...'
 designer = User.create!(
-  email: 'dev@test.com',
+  email: 'designer@test.com',
   password: '123456',
-  full_name: 'Daniela Rios',
-  username: 'dani_rioss',
-  profile: 'Sou designer gráfica. Trabalho conforme a necessidade do cliente para obter os melhores resultados,
-  com uma visão jovem, atualizada e sempre aberto às novidades do mercado.',
+  full_name: 'Testador Designer',
+  username: 'testador_designer',
+  profile: 'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna.Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!Mé faiz elementum girarzis, nisi eros vermeio.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
   document: '023729341-20'
 )
 
@@ -52,7 +51,7 @@ producer_designer = User.create!(
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
-puts 'assigning roles to user...'
+puts 'assigning roles to users...'
 UserRole.create!(
   user: designer,
   role: Role.first
@@ -73,7 +72,7 @@ UserRole.create!(
   role: Role.second
 )
 
-puts 'creating address...'
+puts 'creating addresses...'
 Address.create!(
   street: 'Rua SB-36 qd. 49 lt. 05',
   number: 's/n',
@@ -83,7 +82,6 @@ Address.create!(
   asta_addressable: designer
 )
 
-puts 'creating address...'
 Address.create!(
   street: 'Rua Celeste Santi',
   number: '68',
@@ -91,6 +89,19 @@ Address.create!(
   city: 'Curitiba',
   state: 'PR',
   asta_addressable: producer
+)
+
+puts 'creating phone numbers...'
+Phone.create!(
+  country_code: '+55',
+  number: '62984279962',
+  phonable: designer
+)
+
+Phone.create!(
+  country_code: '+55',
+  number: '(48)35214439',
+  phonable: producer
 )
 
 puts 'Fim'
