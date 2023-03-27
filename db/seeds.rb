@@ -109,18 +109,20 @@ Phone.create!(
 
 puts 'creating event...'
 Event.create!(
+  user: producer_designer,
   title: 'Meu primeiro freela',
-  description: 'Criar a arte visual da feira hype de Ipanema',
-  start_time: '01/05/2023',
-  end_time: '10/05/2023'
+  description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
+  start_time: DateTime.new(2023, 5, 1, 10, 30, 0),
+  end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
 puts 'creating event...'
 Event.create!(
+  user: producer,
   title: 'Inteligência ARTE-ficial',
-  description: 'Mix de arte humana com robô',
-  start_time: '01/07/2023',
-  end_time: '10/07/2023'
+  description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
+  start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
+  end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
 puts 'Fim'
