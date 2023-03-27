@@ -84,6 +84,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'shoulda'
 end
 
 group :development do
