@@ -10,9 +10,16 @@ class Product < ApplicationRecord
 
   validate :check_presence_of_pixels_and_mm
 
-  def check_presence_of_pixels_and_mm
-    
+  def check_presence_of_mm
+    mm_height.positive? && mm_width.positive? if pixels_height.nil? && pixels_width.nil?
   end
 
+  def check_presence_of_pixels
+    pixels_height.positive? && pixels_width.positive? if mm_height.nil? && mm_width.nil?
+  end
+
+  def check_presence_of_milliseconds_length
+    validates :milliseconds_length, presence: true if format == 'audio' || format == 'video'
+  end
 
 end
