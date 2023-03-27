@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :format, presence: true
   validates :format, inclusion: { in: %w[digital printed audio video], message: '%<value> is not a valid role.' }
   validates :required_time, numericality: { only_integer: true, greater_than: 0 }
-  # validates :category, inclusion: { in: %w[flyer poster video], message: '%<value> is not a valid role.' }
+  validates :category, inclusion: { in: %w[flyer poster audio video], message: '%<value> is not a valid role.' }
 
   validate :check_presence_of_pixels, :check_presence_of_mm, :check_presence_of_milliseconds_length
 
@@ -21,5 +21,4 @@ class Product < ApplicationRecord
   def check_presence_of_milliseconds_length
     validates :milliseconds_length, presence: true if format == 'audio' || format == 'video'
   end
-
 end
