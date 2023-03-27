@@ -18,6 +18,9 @@ Role.destroy_all
 puts 'destroying every User'
 User.destroy_all
 
+puts 'destroying every Event'
+Event.destroy_all
+
 puts 'creating roles...'
 %w[designer producer].each do |role|
   Role.create!(
@@ -91,6 +94,22 @@ Address.create!(
   city: 'Curitiba',
   state: 'PR',
   asta_addressable: producer
+)
+
+puts 'creating event...'
+Event.create!(
+  title: 'Meu primeiro freela',
+  description: 'Criar a arte visual da feira hype de Ipanema',
+  start_time: '01/05/2023',
+  end_time: '10/05/2023'
+)
+
+puts 'creating event...'
+Event.create!(
+  title: 'Inteligência ARTE-ficial',
+  description: 'Mix de arte humana com robô',
+  start_time: '01/07/2023',
+  end_time: '10/07/2023'
 )
 
 puts 'Fim'
