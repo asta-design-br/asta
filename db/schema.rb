@@ -58,15 +58,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_181606) do
     t.index ["asta_addressable_type", "asta_addressable_id"], name: "index_addresses_on_addressable"
   end
 
-  create_table "events", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "title"
-    t.string "description"
-    t.datetime "start_time"
-    t.datetime "end_time"
+  create_table "phones", force: :cascade do |t|
+    t.string "phonable_type", null: false
+    t.bigint "phonable_id", null: false
+    t.string "number"
+    t.string "country_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["phonable_type", "phonable_id"], name: "index_phones_on_phonable"
   end
 
   create_table "roles", force: :cascade do |t|
