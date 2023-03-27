@@ -18,6 +18,9 @@ Role.destroy_all
 puts 'destroying every User'
 User.destroy_all
 
+puts 'destroying every Event'
+Event.destroy_all
+
 puts 'creating roles...'
 %w[designer producer].each do |role|
   Role.create!(
@@ -102,6 +105,24 @@ Phone.create!(
   country_code: '+55',
   number: '(48)35214439',
   phonable: producer
+)
+
+puts 'creating event...'
+Event.create!(
+  user: producer_designer,
+  title: 'Meu primeiro freela',
+  description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
+  start_time: DateTime.new(2023, 5, 1, 10, 30, 0),
+  end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
+)
+
+puts 'creating event...'
+Event.create!(
+  user: producer,
+  title: 'Inteligência ARTE-ficial',
+  description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
+  start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
+  end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
 puts 'Fim'
