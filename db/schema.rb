@@ -58,6 +58,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_181606) do
     t.index ["asta_addressable_type", "asta_addressable_id"], name: "index_addresses_on_addressable"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title"
+    t.string "description"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
   create_table "phones", force: :cascade do |t|
     t.string "phonable_type", null: false
     t.bigint "phonable_id", null: false
@@ -101,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_181606) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "events", "users"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end
