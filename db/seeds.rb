@@ -21,6 +21,9 @@ User.destroy_all
 puts 'destroying every Event'
 Event.destroy_all
 
+puts 'destroying every Bid'
+Bid.destroy_all
+
 puts 'creating roles...'
 %w[designer producer].each do |role|
   Role.create!(
@@ -123,6 +126,18 @@ Event.create!(
   description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
   start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
+)
+
+puts 'creating bid...'
+Bid.create!(
+  user: designer,
+  auction: 'Teste 1'
+)
+
+puts 'creating bid...'
+Bid.create!(
+  user: producer,
+  auction: 'Teste 2'
 )
 
 puts 'Fim'
