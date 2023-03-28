@@ -10,10 +10,10 @@ RSpec.describe Auction, type: :model do
       expect(@auction).to be_valid
     end
 
-    it 'should have a valid deadline' do
-      @auction.deadline = nil
+    it 'should have a valid product' do
+      @auction.product = nil
       expect(@auction).to_not be_valid
-      expect(@auction.errors[:deadline]).to include('must be after now and before start time')
+      expect(@auction.errors[:product]).to include('must be after now and before start time')
     end
 
     it 'should have a valid deadline' do
