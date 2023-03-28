@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_27_203952) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_28_182235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,7 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_203952) do
     t.bigint "event_id", null: false
     t.string "name"
     t.string "description"
-    t.string "format"
+    t.string "product_format"
     t.integer "pixels_height"
     t.integer "pixels_width"
     t.integer "mm_height"

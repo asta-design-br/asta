@@ -1,15 +1,15 @@
 FactoryBot.define do
   factory :product do
-    event { nil }
-    name { "MyString" }
-    description { "MyString" }
-    format { "MyString" }
-    pixels_height { 1 }
+    event { build(:event) }
+    name { 'Mussum Flyer' }
+    description { 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.' }
+    product_format { 'printed' }
+    pixels_height { 2 }
     pixels_width { 1 }
-    mm_height { 1 }
-    mm_width { 1 }
-    milliseconds_length { 1 }
-    required_time { 1 }
-    category { "MyString" }
+    mm_height { nil }
+    mm_width { nil }
+    milliseconds_length { nil }
+    required_time { nil }
+    category { 'flyer' }
   end
 end
