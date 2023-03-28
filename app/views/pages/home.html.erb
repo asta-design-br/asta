@@ -1,7 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-
 <% if user_signed_in? %>
   <%= link_to "edit your account", edit_user_registration_path %><br>
   <%= button_to "logout", destroy_user_session_path, method: :delete  %>
