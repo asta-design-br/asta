@@ -1,1 +1,12 @@
 // Specific CSS for your home-page
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.test {
+  background-color: black;
+  width: 720px;
+  height: 2000px;
+}

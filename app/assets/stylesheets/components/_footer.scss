@@ -1,0 +1,29 @@
+.footer {
+  background-color: #364F6B;
+  // position: fixed;
+  // left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 40px 0;
+  margin-top: auto;
+  height: 20vh;
+}
+
+.footer-items {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.footer-link {
+  color: #fff;
+  font-size: 1.3em;
+
+    &:hover {
+      color: #3FC1C9;
+      transition: .1s;
+    }
+}
