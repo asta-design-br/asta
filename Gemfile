@@ -49,7 +49,7 @@ gem 'sassc-rails'
 
 # gem "sidekiq", ">= 6.4.0"
 
-# gem 'trestle'
+gem 'trestle'
 
 # CPF and CNPJ validation
 gem 'cpf_cnpj', '~> 0.2.1'
