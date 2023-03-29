@@ -5,7 +5,6 @@ class Product < ApplicationRecord
   validates :name, length: { maximum: 50, too_long: '50 characters is the maximum allowed' }
   validates :description, length: { minimum: 50, too_short: 'is too short (minimum is 50 characters)' }
   validates :product_format, inclusion: { in: %w[digital printed audio video], message: 'this is not a valid format.' }
-  # validates :required_time, numericality: { greater_than: 0 }
   validates :category, inclusion: { in: %w[flyer poster sticker backdrop audio video], message: 'this is not a valid role.' }
 
   validate :check_required_time
@@ -29,7 +28,7 @@ class Product < ApplicationRecord
     else
       required_time.nil?
     end
-  
+
 
   end
 

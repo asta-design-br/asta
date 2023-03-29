@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.references :event, null: false, foreign_key: true
       t.string :name
       t.string :description
-      t.string :format
+      t.string :product_format
       t.integer :pixels_height
       t.integer :pixels_width
       t.integer :mm_height
