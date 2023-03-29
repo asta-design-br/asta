@@ -43,7 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_044712) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "addressable_type", null: false
     t.string "street"
     t.string "number"
     t.string "complement"
