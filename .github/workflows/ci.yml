@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
-      DATABASE_URL: postgres://postgres:example@localhost:5432/db_test
+      DATABASE_URL: postgres://postgres:example@localhost:5432/asta_test
     services:
       postgres:
         image: postgres:latest
