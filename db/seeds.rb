@@ -34,7 +34,9 @@ designer = User.create!(
   password: '123456',
   full_name: 'Testador Designer',
   username: 'testador_designer',
-  profile: 'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna.Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!Mé faiz elementum girarzis, nisi eros vermeio.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
+  profile: 'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis,
+  arcu quam euismod magna.Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
+  Mé faiz elementum girarzis, nisi eros vermeio.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
   document: '023729341-20'
 )
 
