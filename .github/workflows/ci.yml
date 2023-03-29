@@ -14,9 +14,9 @@ jobs:
         image: postgres:latest
         ports: ['5432:5432']
         env:
-          DATABASE_NAME: asta_test
-          DATABASE_USER: postgres
-          DATABASE_PASSWORD: docker
+          POSTGRES_DB: asta_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: docker
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - name: Checkout code
