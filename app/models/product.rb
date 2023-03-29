@@ -1,21 +1,21 @@
 class Product < ApplicationRecord
   belongs_to :event
 
-  validates :name, presence: true
-  validates :name, length: { maximum: 50, too_long: '50 characters is the maximum allowed' }
-  validates :description, length: { minimum: 50, too_short: 'this too short (minimum is 50 characters)' }
-  validates :product_format, inclusion: { in: %w[digital printed audio video], message: 'this is not a valid format.' }
-  validates :category, inclusion: { in: %w[flyer poster sticker backdrop audio video], message: 'this is not a valid role.' }
-  validates :required_time, numericality: { only_integer: true, grater_than: 0, message: 'should be greater than 0' }
+  validates :name, :product_format, :category, presence: true
+  validates :name, length: { maximum: 50, too_long: '%(count) characters is the maximum allowed.' }
+  validates :description, length: { minimum: 50, too_short: '%(count) is too short (minimum is 50 characters).' }
+  validates :product_format, inclusion: { in: %w[digital printed audio video], message: '%(value) is not a valid format.' }
+  validates :category, inclusion: { in: %w[flyer poster sticker backdrop audio video], message: '%(value) is not a valid category.' }
+  validates :required_time, numericality: { only_integer: true, greater_than: 0, message: 'should be greater than 0.' }
 
-  validate :check_milliseconds_length#, :check_presence_of_pixels_or_milimeters
+  validate :check_milliseconds_length#, :check_height
 
   def check_milliseconds_length
     if product_format == 'audio' || product_format == 'video'
       if milliseconds_length.nil? || milliseconds_length.zero?
         errors.add(
           :milliseconds_length,
-          'must exist and be greater than zero'
+          'must exist and be greater than zero.'
         )
       else
         milliseconds_length.positive?
@@ -24,6 +24,24 @@ class Product < ApplicationRecord
       milliseconds_length.nil?
     end
   end
+
+  # def check_height
+  #   if product_format == 'digital' || product_format == 'printed'
+  #     if pixels_height.nil? && mm_height.nil?
+  #       errors.add(
+  #         :pixels_height, :mm_height,
+  #         'must have a pixel or milimeters height'
+  #       )
+  #     elsif pixels_height.nil? && mm_height.positive?
+  #       mm_height.positive?
+  #     else
+  #       pixels_height.positive?
+  #     end
+  #   else
+  #     pixels_height.nil?
+  #     mm_height.nil?
+  #   end
+  # end
 
   # def check_presence_of_pixels_or_milimeters
   #   if product_format == 'digital' || product_format == 'printed'
