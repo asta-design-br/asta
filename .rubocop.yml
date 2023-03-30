@@ -70,6 +70,7 @@ AllCops:
     - "db/migrate/*"
     # - "config/initializers/simple_form.rb"
     - "config/initializers/simple_form_bootstrap.rb"
+    - "bonus_formatter.rb"
   # Default formatter will be used if no `-f/--format` option is given.
   DefaultFormatter: progress
   # Cop names are displayed in offense messages by default. Change behavior
@@ -2460,6 +2461,7 @@ Metrics/BlockLength:
     - refine
   Exclude:
     - "**/*.gemspec"
+    - 'spec/**/*'
 
 Metrics/BlockNesting:
   Description: "Avoid excessive block nesting."
@@ -2478,6 +2480,8 @@ Metrics/ClassLength:
   CountComments: false # count full line comments?
   Max: 100
   CountAsOne: []
+  Exclude:
+  - 'spec/**/*'
 
 # Avoid complex methods.
 Metrics/CyclomaticComplexity:
