@@ -79,6 +79,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_044712) do
     t.index ["phonable_type", "phonable_id"], name: "index_phones_on_phonable"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.bigint "event_id", null: false
+    t.string "name"
+    t.string "description"
+    t.string "format"
+    t.integer "pixels_height"
+    t.integer "pixels_width"
+    t.integer "mm_height"
+    t.integer "mm_width"
+    t.integer "milliseconds_length"
+    t.integer "required_time"
+    t.string "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_products_on_event_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -113,6 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_29_044712) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "users"
+  add_foreign_key "products", "events"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end
