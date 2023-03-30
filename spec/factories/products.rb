@@ -6,10 +6,10 @@ FactoryBot.define do
     product_format { 'printed' }
     pixels_height { 2 }
     pixels_width { 1 }
-    mm_height { nil }
-    mm_width { nil }
-    milliseconds_length { nil }
-    required_time { nil }
+    mm_height { 0 }
+    mm_width { 0 }
+    milliseconds_length { 0 }
+    required_time { 0 }
     category { 'flyer' }
   end
 end
