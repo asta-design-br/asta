@@ -4,129 +4,94 @@ class Product < ApplicationRecord
   validates :name, :product_format, :category, presence: true
   validates :name, length: { maximum: 50, too_long: '%(count) characters is the maximum allowed.' }
   validates :description, length: { minimum: 50, too_short: '%(count) is too short (minimum is 50 characters).' }
-  validates :product_format, inclusion: { in: %w[digital printed audio video], message: '%(value) is not a valid format.' }
-  validates :category, inclusion: { in: %w[flyer poster sticker backdrop audio video], message: '%(value) is not a valid category.' }
+  validates :product_format,
+            inclusion: { in: %w[digital printed audio video], message: '%(value) is not a valid format.' }
+  validates :category,
+            inclusion: { in: %w[flyer poster sticker backdrop audio video],
+                         message: '%(value) is not a valid category.' }
   validates :required_time, numericality: { only_integer: true, greater_than: 0, message: 'should be greater than 0.' }
 
-  validate :check_milliseconds_length#, :check_height
+  validate :check_milliseconds_length, :check_pixels_or_milimeters
 
   def check_milliseconds_length
-    if product_format == 'audio' || product_format == 'video'
-      if milliseconds_length.nil? || milliseconds_length.zero?
-        errors.add(
-          :milliseconds_length,
-          'must exist and be greater than zero.'
-        )
-      else
-        milliseconds_length.positive?
-      end
+    return unless product_format == 'audio' || product_format == 'video'
+    return if !milliseconds_length.nil? && milliseconds_length.positive?
+
+    errors.add(
+      :milliseconds_length,
+      'must exist and be greater than zero.'
+    )
+  end
+
+  def check_pixels_or_milimeters
+    return unless product_format == 'printed' || product_format == 'digital'
+
+    if pixels_height || pixels_width || mm_height || mm_width
+      handle_specific_errors
     else
-      milliseconds_length.nil?
+      handle_non_errors
     end
   end
 
-  # def check_height
-  #   if product_format == 'digital' || product_format == 'printed'
-  #     if pixels_height.nil? && mm_height.nil?
-  #       errors.add(
-  #         :pixels_height, :mm_height,
-  #         'must have a pixel or milimeters height'
-  #       )
-  #     elsif pixels_height.nil? && mm_height.positive?
-  #       mm_height.positive?
-  #     else
-  #       pixels_height.positive?
-  #     end
-  #   else
-  #     pixels_height.nil?
-  #     mm_height.nil?
-  #   end
-  # end
+  def handle_non_errors
+    presence_of_pixels = pixels_height.present? && pixels_width.present?
+    presence_of_mm = mm_height.present? && mm_width.present?
 
-  # def check_presence_of_pixels_or_milimeters
-  #   if product_format == 'digital' || product_format == 'printed'
-  #     if pixels_height.nil? && pixels_width.nil? && mm_height.nil? && mm_width.nil?
-  #       errors.add(
-  #         :pixels_height, :pixels_width, :mm_height, :mm_width,
-  #         'pixels or milimeters height/width should be delimited'
-  #       )
-  #     elsif (pixels_height.positive? && pixels_width.positive?) && (mm_height.positive? && mm_width.positive?)
-  #       errors.add(
-  #         :pixels_height, :pixels_width, :mm_height, :mm_width,
-  #         'pixels OR milimeters height/width should be delimited, not both of them'
-  #       )
-  #     else
-  #       (pixels_height.positive? && pixels_width.positive?) || (mm_height.positive? && mm_width.positive?)
-  #     end
-  #   end
-  # end
+    return if presence_of_pixels && !presence_of_mm
+    return if presence_of_mm && !presence_of_pixels
 
+    handle_dimensions_errors
+  end
 
+  def handle_dimensions_errors
+    %i[pixels_height pixels_width mm_height mm_width].each do |attr|
+      errors.add(
+        attr,
+        'must have or milimeters or pixels dimension.'
+      )
+    end
+  end
 
-  #     if pixels_height.positive? && pixels_width.positive?
-  #       (mm_height.nil? && mm.width.nil?) || (mm_height.zero? && mm.width.zero?)
-  #     elsif mm_height.positive? && mm_width.positive?
-  #       (pixels_height.nil? && pixels.width.nil?) || (pixels_height.zero? && pixels.width.zero?)
-  #     else
-  #       errors.add(
-  #         :pixzels_height, :pixels_width, :mm_height, :mm_width,
-  #         'pixels or milimeters height and width should be delimited'
-  #       )
-  #     end
-  #   else
-  #     pixels_height.nil? && pixels_width.nil? && mm_height.nil? && mm_width.nil?
-  #   end
-  # end
+  def handle_specific_errors
+    handle_pixels_height_errors
+    handle_pixels_width_errors
+    handle_mm_height_errors
+    handle_mm_width_errors
+  end
 
-  # def check_presence_of_pixels_or_milimeters
-  #   if product_format == 'digital' || product_format == 'printed'
-  #     if pixels_height.positive?
-  #       pixels_width.positive?
-  #       mm_height.nil? || mm_height.zero?
-  #       mm_width.nil? || mm_width.zero?
-  #     elsif mm_height.positive?
-  #       mm_width.positive?
-  #       pixels_height.nil? || pixels_height.zero?
-  #       pixels_width.nil? || pixels_width.zero?
-  #     else
-  #       errors.add(
-  #         :pixels_height, :pixels_width, :mm_height, :mm_width,
-  #         'pixels or milimeters height and width should be delimited'
-  #       )
-  #     end
-  #   else
-  #     pixels_height.nil? && pixels_width.nil? && mm_height.nil? && mm_width.nil?
-  #   end
-  # end
+  def handle_pixels_height_errors
+    return unless pixels_height.present? && pixels_height.positive? && (pixels_width.nil? || pixels_width.zero?)
 
+    errors.add(
+      :pixels_width,
+      'must have a positive pixel width value.'
+    )
+  end
 
-  # validate :check_presence_of_pixels, :check_presence_of_mm, :check_presence_of_milliseconds_length
+  def handle_pixels_width_errors
+    return unless pixels_width.present? && pixels_width.positive? && (pixels_height.nil? || pixels_height.zero?)
 
-  # def check_presence_of_pixels
-  #   pixels_height.positive? && pixels_width.positive? if mm_height.nil? && mm_width.nil?
+    errors.add(
+      :pixels_height,
+      'must have a positive pixel height value.'
+    )
+  end
 
-  #   errors.add(
-  #     :pixels_height,
-  #     'must have pixels or milimeters height'
-  #   )
+  def handle_mm_height_errors
+    return unless mm_height.present? && mm_height.positive? && (mm_width.nil? || mm_width.zero?)
 
-  #   errors.add(
-  #     :pixels_width,
-  #     'must have pixels or milimeters width'
-  #   )
-  # end
+    errors.add(
+      :mm_width,
+      'must have a positive millimeter width value.'
+    )
+  end
 
-  # def check_presence_of_mm
-  #   mm_height.positive? && mm_width.positive? if pixels_height.nil? && pixels_width.nil?
+  def handle_mm_width_errors
+    return unless mm_width.present? && mm_width.positive? && (mm_height.nil? || mm_height.zero?)
 
-  #   errors.add(
-  #     :mm_height,
-  #     'must have pixels or milimeters height'
-  #   )
-
-  #   errors.add(
-  #     :mm_width,
-  #     'must have pixels or milimeters width'
-  #   )
-  # end
+    errors.add(
+      :mm_height,
+      'must have a positive millimeter height value.'
+    )
+  end
 end
