@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_27_203952) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_01_134305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_203952) do
     t.index ["asta_addressable_type", "asta_addressable_id"], name: "index_addresses_on_addressable"
   end
 
+  create_table "auctions", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.datetime "deadline"
+    t.boolean "open", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_auctions_on_product_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "auction_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["auction_id"], name: "index_bids_on_auction_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
@@ -102,6 +120,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_203952) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.bigint "bid_id", null: false
+    t.integer "sequence_id"
+    t.string "title"
+    t.text "notes"
+    t.integer "price_cents"
+    t.datetime "due_date"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bid_id"], name: "index_steps_on_bid_id"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "role_id", null: false
@@ -129,8 +160,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_27_203952) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "auctions", "products"
+  add_foreign_key "bids", "auctions"
+  add_foreign_key "bids", "users"
   add_foreign_key "events", "users"
   add_foreign_key "products", "events"
+  add_foreign_key "steps", "bids"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end
