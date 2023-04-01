@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :auction do
-    product { nil }
-    deadline { "2023-03-28 18:58:07" }
+    product { build(:product) }
+    deadline { DateTime.now + 1.hour }
     open { false }
   end
 end

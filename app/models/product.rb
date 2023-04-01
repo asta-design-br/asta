@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :event
+  has_many :auctions, dependent: :destroy
 
   validates :name, :product_format, :category, presence: true
   validates :name, length: { maximum: 50, too_long: '%(count) characters is the maximum allowed.' }
