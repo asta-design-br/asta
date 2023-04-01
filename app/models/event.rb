@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   has_many :addresses, as: :asta_addressable
   has_many :phones, as: :phonable
   has_many_attached :visual_references
-
+  
   validates :title, :description, :start_time, :end_time, presence: true
   # rubocop:disable Style/StringLiterals, Style/FormatStringToken
   validates :title, length: { maximum: 50, too_long: "%{count} characters is the maximum allowed" }
