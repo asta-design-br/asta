@@ -108,7 +108,7 @@ Phone.create!(
 )
 
 puts 'creating event...'
-Event.create!(
+event1 = Event.create!(
   user: producer_designer,
   title: 'Meu primeiro freela',
   description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
@@ -117,12 +117,36 @@ Event.create!(
 )
 
 puts 'creating event...'
-Event.create!(
+event2 = Event.create!(
   user: producer,
   title: 'Inteligência ARTE-ficial',
   description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
   start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
+
+puts 'creating product...'
+Product.create!(
+  event: event1,
+  name: 'Babilonia Feira',
+  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  product_format: 'printed',
+  pixels_height: '5',
+  pixels_width: '3',
+  required_time: '15',
+  category: 'flyer'
+)
+
+# puts 'creating product...'
+# Product.create!(
+#   event: event1,
+#   name: 'Babilonia Feira',
+#   description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+#   product_format: 'printed',
+#   pixels_height: '5',
+#   pixels_width: '3',
+#   required_time: '15',
+#   category: 'flyer'
+# )
 
 puts 'Fim'
