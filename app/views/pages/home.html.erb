@@ -1,10 +1,45 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Pages#home</h1>
+  <p>Find me in app/views/pages/home.html.erb</p>
 
-<% if user_signed_in? %>
-  <%= link_to "edit your account", edit_user_registration_path %><br>
-  <%= button_to "logout", destroy_user_session_path, method: :delete  %>
-<% else %>
-    <%= link_to "login", new_user_session_path %><br>
-    <%= link_to "sign_up", new_user_registration_path %>
-<% end %>
+  <div class="card-wrapper">
+    <div class="project-card">
+      <div class="project-card-top">
+        <%# <div class="project-card-title"> %>
+        <div><h3>Project Title</h3>
+          <p>Posted on 24/3/20</p>
+        </div>
+        <div><%= link_to "See event", "#", class: "btn-blue" %></div>
+      </div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ea deleniti blanditiis, porro maiores optio maxime. Ipsum fugit sequi commodi a numquam, dolor assumenda laboriosam sapiente ab animi temporibus reprehenderit!</p>
+      <div class="tags-wrap">
+        <div class="tag-web">Web Design</div>
+        <div class="tag-flyer">Flyer</div>
+        <div class="tag-video">Video</div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-top">
+        <%# <div class="project-card-title"> %>
+        <div><h3>Project Title</h3>
+          <p>Posted on 24/3/20</p>
+        </div>
+        <div><%= link_to "See event", "#", class: "btn-blue" %></div>
+      </div>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ea deleniti blanditiis, porro maiores optio maxime. Ipsum fugit sequi commodi a numquam, dolor assumenda laboriosam sapiente ab animi temporibus reprehenderit!</p>
+      <div class="tags-wrap">
+        <div class="tag-web">Web Design</div>
+        <div class="tag-flyer">Flyer</div>
+        <div class="tag-video">Video</div>
+      </div>
+    </div>
+  </div>
+
+  <% if user_signed_in? %>
+    <%= link_to "edit your account", edit_user_registration_path %><br>
+    <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+  <% else %>
+      <%= link_to "login", new_user_session_path %><br>
+      <%= link_to "sign_up", new_user_registration_path %>
+  <% end %>
+</div>

@@ -1,0 +1,40 @@
+.card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.project-card {
+  max-width: 550px;
+  min-height: 350px;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  border-radius: 4px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  h3 {
+    color: #364F6B;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  p {
+    color: #8E8E8E;
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+}
+
+.project-card-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tags-wrap {
+  display: flex;
+  gap: 8px;
+}
