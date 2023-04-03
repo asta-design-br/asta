@@ -6,11 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts 'destroying every User Roles'
-UserRole.destroy_all
+# puts 'destroying every User Roles'
+# UserRole.destroy_all
 
-puts 'destroying every Address'
-Address.destroy_all
+# puts 'destroying every Address'
+# Address.destroy_all
 
 puts 'destroying every Role'
 Role.destroy_all
@@ -20,9 +20,6 @@ User.destroy_all
 
 # puts 'destroying every Event'
 # Event.destroy_all
-
-# puts 'destroying every Product'
-# Product.destroy_all
 
 puts 'creating roles...'
 %w[designer producer].each do |role|
@@ -110,8 +107,8 @@ Phone.create!(
   phonable: producer
 )
 
-puts 'creating events...'
-event1 = Event.create!(
+puts 'creating event...'
+Event.create!(
   user: producer_designer,
   title: 'Meu primeiro freela',
   description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
@@ -119,45 +116,13 @@ event1 = Event.create!(
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
-event2 = Event.create!(
+puts 'creating event...'
+Event.create!(
   user: producer,
   title: 'Inteligência ARTE-ficial',
   description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
   start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
-)
-
-puts 'creating products...'
-Product.create!(
-  event: event1,
-  name: 'Babilonia Feira Flyer',
-  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
-  product_format: 'printed',
-  mm_height: 5,
-  mm_width: 3,
-  required_time: 15,
-  category: 'flyer'
-)
-
-Product.create!(
-  event: event2,
-  name: 'ARTE-ficial digital poster',
-  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
-  product_format: 'digital',
-  mm_height: 8,
-  mm_width: 8,
-  required_time: 10,
-  category: 'poster'
-)
-
-Product.create!(
-  event: event2,
-  name: 'ARTE-ficial video',
-  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
-  product_format: 'video',
-  milliseconds_length: 90,
-  required_time: 23,
-  category: 'video'
 )
 
 puts 'Fim'
