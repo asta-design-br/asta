@@ -1,16 +1,16 @@
 .btn-blue {
   background-color: #3FC1C9;
   color: #fff;
-  padding: 8px 32px;
+  padding: 4px 28px;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 4px;
   font-size: 1.2em;
   text-align: center;
   white-space: nowrap;
 
   &:hover {
     color: #fff;
-    opacity: 0.9;
+    opacity: 0.6;
     transition: .1s;
   }
 }
