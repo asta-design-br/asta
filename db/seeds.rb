@@ -18,6 +18,15 @@ Role.destroy_all
 puts 'destroying every User'
 User.destroy_all
 
+# puts 'destroying every Event'
+# Event.destroy_all
+
+# puts 'destroying every Bid'
+# Bid.destroy_all
+
+# puts 'destroying every Auction'
+# Auction.destroy_all
+
 puts 'creating roles...'
 %w[designer producer].each do |role|
   Role.create!(
@@ -31,7 +40,10 @@ designer = User.create!(
   password: '123456',
   full_name: 'Testador Designer',
   username: 'testador_designer',
-  profile: 'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna.Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!Mé faiz elementum girarzis, nisi eros vermeio.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
+  profile: 'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna.
+  Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
+  Mé faiz elementum girarzis, nisi eros vermeio.
+  Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
   document: '023729341-20'
 )
 
@@ -122,10 +134,11 @@ event2 = Event.create!(
 )
 
 puts 'creating products...'
-Product.create!(
+product1 = Product.create!(
   event: event1,
-  name: 'Babilonia Feira Flyer',
-  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  name: 'Mussum Flyer',
+  description: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
+  Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
   product_format: 'printed',
   mm_height: 5,
   mm_width: 3,
@@ -133,10 +146,12 @@ Product.create!(
   category: 'flyer'
 )
 
-Product.create!(
+puts 'creating product...'
+product2 = Product.create!(
   event: event2,
-  name: 'ARTE-ficial digital poster',
-  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  name: 'Didi Digital Poster',
+  description: 'Didi Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
+  Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
   product_format: 'digital',
   mm_height: 8,
   mm_width: 8,
@@ -146,12 +161,34 @@ Product.create!(
 
 Product.create!(
   event: event2,
-  name: 'ARTE-ficial video',
+  name: 'Didi Digital Video',
   description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
   product_format: 'video',
   milliseconds_length: 90,
   required_time: 23,
   category: 'video'
+)
+
+puts 'creating auctions...'
+auction1 = Auction.create!(
+  product: product1,
+  deadline: product1.event.start_time - 1.hour
+)
+
+auction2 = Auction.create!(
+  product: product2,
+  deadline: product2.event.start_time - 1.hour
+)
+
+puts 'creating bids...'
+Bid.create!(
+  user: designer,
+  auction: auction1
+)
+
+Bid.create!(
+  user: designer,
+  auction: auction2
 )
 
 puts 'Fim'
