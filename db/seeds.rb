@@ -27,7 +27,7 @@ Event.destroy_all
 puts 'destroying every Bid'
 Bid.destroy_all
 
-puts 'destroying every Bid'
+puts 'destroying every Auction'
 Auction.destroy_all
 
 puts 'creating roles...'
@@ -189,7 +189,7 @@ Bid.create!(
 
 puts 'creating bid...'
 Bid.create!(
-  user: producer,
+  user: designer,
   auction: auction2
 )
 
