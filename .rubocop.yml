@@ -2461,7 +2461,7 @@ Metrics/BlockLength:
     - refine
   Exclude:
     - "**/*.gemspec"
-    - 'spec/**/*'
+    - "spec/**/*"
 
 Metrics/BlockNesting:
   Description: "Avoid excessive block nesting."

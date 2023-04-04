@@ -13,9 +13,10 @@ class User < ApplicationRecord
 
   validate :check_full_name, :check_username, :check_document
 
-  has_many :user_roles
+  has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
   has_many :events, dependent: :destroy
+  has_many :bids, dependent: :destroy
 
   private
 

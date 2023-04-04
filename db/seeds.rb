@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts 'destroying every Products'
+Product.destroy_all
+
 puts 'destroying every User Roles'
 UserRole.destroy_all
 
@@ -21,6 +24,12 @@ User.destroy_all
 puts 'destroying every Event'
 Event.destroy_all
 
+puts 'destroying every Bid'
+Bid.destroy_all
+
+puts 'destroying every Auction'
+Auction.destroy_all
+
 puts 'creating roles...'
 %w[designer producer].each do |role|
   Role.create!(
@@ -34,9 +43,10 @@ designer = User.create!(
   password: '123456',
   full_name: 'Testador Designer',
   username: 'testador_designer',
-  profile: 'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis,
-  arcu quam euismod magna.Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
-  Mé faiz elementum girarzis, nisi eros vermeio.Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
+  profile: 'Mussum Ipsum, cacilds vidis litro abertis. Copo furadis é disculpa de bebadis, arcu quam euismod magna.
+  Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
+  Mé faiz elementum girarzis, nisi eros vermeio.
+  Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
   document: '023729341-20'
 )
 
@@ -110,7 +120,7 @@ Phone.create!(
 )
 
 puts 'creating event...'
-Event.create!(
+event1 = Event.create!(
   user: producer_designer,
   title: 'Meu primeiro freela',
   description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
@@ -119,12 +129,68 @@ Event.create!(
 )
 
 puts 'creating event...'
-Event.create!(
+event2 = Event.create!(
   user: producer,
   title: 'Inteligência ARTE-ficial',
   description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
   start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
+)
+
+puts 'creating product...'
+product1 = Product.create!(
+  event: event1,
+  name: 'Mussum Flyer',
+  description: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
+  Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
+  product_format: 'audio',
+  pixels_height: nil,
+  pixels_width: nil,
+  mm_height: nil,
+  mm_width: nil,
+  milliseconds_length: 2,
+  required_time: 5,
+  category: 'audio'
+)
+
+puts 'creating product...'
+product2 = Product.create!(
+  event: event2,
+  name: 'Didi Flyer',
+  description: 'Didi Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
+  Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
+  product_format: 'audio',
+  pixels_height: nil,
+  pixels_width: nil,
+  mm_height: nil,
+  mm_width: nil,
+  milliseconds_length: 2000,
+  required_time: 10,
+  category: 'audio'
+)
+
+puts 'creating auction...'
+auction1 = Auction.create!(
+  product: product1,
+  deadline: product1.event.start_time - 1.hour
+)
+
+puts 'creating auction...'
+auction2 = Auction.create!(
+  product: product2,
+  deadline: product2.event.start_time - 1.hour
+)
+
+puts 'creating bid...'
+Bid.create!(
+  user: designer,
+  auction: auction1
+)
+
+puts 'creating bid...'
+Bid.create!(
+  user: designer,
+  auction: auction2
 )
 
 puts 'Fim'
