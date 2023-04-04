@@ -10,10 +10,10 @@ RSpec.describe Auction, type: :model do
       expect(@auction).to be_valid
     end
 
-    it 'should have a valid product' do
+    it 'should have an existing product' do
       @auction.product = nil
       expect(@auction).to_not be_valid
-      expect(@auction.errors[:product]).to include('must exist')
+      expect(@auction.errors[:product]).to include('can\'t be blank')
     end
 
     it 'should have an existing deadline' do
