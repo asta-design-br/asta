@@ -34,6 +34,8 @@ puts 'creating roles...'
   )
 end
 
+####
+
 puts 'creating users...'
 designer = User.create!(
   email: 'designer@test.com',
@@ -63,6 +65,8 @@ producer_designer = User.create!(
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
+####
+
 puts 'assigning roles to users...'
 UserRole.create!(
   user: designer,
@@ -84,7 +88,9 @@ UserRole.create!(
   role: Role.second
 )
 
-puts 'creating addresses...'
+####
+
+puts 'creating addresses to users...'
 Address.create!(
   street: 'Rua SB-36 qd. 49 lt. 05',
   number: 's/n',
@@ -103,7 +109,18 @@ Address.create!(
   asta_addressable: producer
 )
 
-puts 'creating phone numbers...'
+Address.create!(
+  street: 'Rua  Manoel Dutra',
+  number: '595',
+  neighborhood: 'Bela Vista',
+  city: 'São Paulo',
+  state: 'SP',
+  asta_addressable: producer_designer
+)
+
+####
+
+puts 'creating phone numbers to users...'
 Phone.create!(
   country_code: '+55',
   number: '62984279962',
@@ -116,9 +133,17 @@ Phone.create!(
   phonable: producer
 )
 
+Phone.create!(
+  country_code: '+55',
+  number: '(11)84240330',
+  phonable: producer_designer
+)
+
+####
+
 puts 'creating events...'
 event1 = Event.create!(
-  user: producer_designer,
+  user: producer,
   title: 'Meu primeiro freela',
   description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
   start_time: DateTime.new(2023, 5, 1, 10, 30, 0),
@@ -126,12 +151,50 @@ event1 = Event.create!(
 )
 
 event2 = Event.create!(
-  user: producer,
+  user: producer_designer,
   title: 'Inteligência ARTE-ficial',
   description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
   start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
+
+####
+
+puts 'creating addresses to events...'
+Address.create!(
+  street: 'Av. 85',
+  number: '584',
+  neighborhood: 'Setor Marista',
+  city: 'Goiânia',
+  state: 'GO',
+  asta_addressable: event1
+)
+
+Address.create!(
+  street: 'Av. Paulista',
+  number: '900',
+  neighborhood: 'Bela Vista',
+  city: 'São Paulo',
+  state: 'SP',
+  asta_addressable: event2
+)
+
+####
+
+puts 'creating phone numbers to events...'
+Phone.create!(
+  country_code: '+55',
+  number: '(11)984279999',
+  phonable: event1
+)
+
+Phone.create!(
+  country_code: '+55',
+  number: '48996860333',
+  phonable: event2
+)
+
+####
 
 puts 'creating products...'
 product1 = Product.create!(
@@ -146,7 +209,6 @@ product1 = Product.create!(
   category: 'flyer'
 )
 
-puts 'creating product...'
 product2 = Product.create!(
   event: event2,
   name: 'Didi Digital Poster',
@@ -159,7 +221,7 @@ product2 = Product.create!(
   category: 'poster'
 )
 
-Product.create!(
+product3 = Product.create!(
   event: event2,
   name: 'Didi Digital Video',
   description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
@@ -168,6 +230,8 @@ Product.create!(
   required_time: 23,
   category: 'video'
 )
+
+####
 
 puts 'creating auctions...'
 auction1 = Auction.create!(
@@ -180,15 +244,27 @@ auction2 = Auction.create!(
   deadline: product2.event.start_time - 1.hour
 )
 
+auction3 = Auction.create!(
+  product: product3,
+  deadline: product3.event.start_time - 1.hour
+)
+
+####
+
 puts 'creating bids...'
 Bid.create!(
-  user: designer,
+  user: producer_designer,
   auction: auction1
 )
 
 Bid.create!(
-  user: designer,
+  user: producer_designer,
   auction: auction2
+)
+
+Bid.create!(
+  user: designer,
+  auction: auction3
 )
 
 puts 'Fim'
