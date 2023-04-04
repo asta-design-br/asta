@@ -2,6 +2,11 @@
 
 First, if you don't have the Docker installed, you can do it clicking [here](https://www.docker.com/products/docker-desktop/) - to open in a new tab, press CMD(Mac) or CTRL(Win) and click - download and install it. We'll need it to go further.
 
+If your Operational System is Windows and you're using Linux on a Virtual Machine you have to open the terminal, follow the instructions in the link bellow.
+https://docs.docker.com/engine/install/ubuntu/
+Copy and paste the commands, and in the end if you see the message "Hello From Docker!" apparently, Docker was successfully installed.
+After it you can follow the steps bellow.
+
 While you wait the download, let's create some aliases to help you with most repetitive commands
 ```bash
 asta() {
@@ -29,7 +34,7 @@ asta yarn build --watch
 To run rails commands, you can run `rasta` and then the rails command. Just like this:
 ```
 rasta db:drop db:create db:migrate db:seed
-``` 
+```
 ```
 rasta c
 ```
