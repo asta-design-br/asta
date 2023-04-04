@@ -143,7 +143,7 @@ Phone.create!(
 
 puts 'creating events...'
 event1 = Event.create!(
-  user: producer,
+  user: designer,
   title: 'Meu primeiro freela',
   description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
   start_time: DateTime.new(2023, 5, 1, 10, 30, 0),
