@@ -6,6 +6,10 @@ RSpec.describe Bid, type: :model do
       @bid = build(:bid)
     end
 
+    after(:all) do
+      User.destroy_all
+    end
+
     it 'should be valid with valid attributes' do
       expect(@bid).to be_valid
     end
