@@ -6,15 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts 'destroying every Step I take...'
-Step.destroy_all
-
-puts 'destroying every Bid'
-Bid.destroy_all
-
-puts 'destroying every Bid'
-Auction.destroy_all
-
 puts 'destroying every Products'
 Product.destroy_all
 
@@ -32,6 +23,12 @@ User.destroy_all
 
 puts 'destroying every Event'
 Event.destroy_all
+
+puts 'destroying every Bid'
+Bid.destroy_all
+
+puts 'destroying every Auction'
+Auction.destroy_all
 
 puts 'creating roles...'
 %w[designer producer].each do |role|
@@ -192,7 +189,7 @@ bid1 = Bid.create!(
 
 puts 'creating bid...'
 bid2 = Bid.create!(
-  user: producer_designer,
+  user: designer,
   auction: auction2
 )
 
