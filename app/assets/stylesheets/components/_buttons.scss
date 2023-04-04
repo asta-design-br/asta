@@ -14,3 +14,39 @@
     transition: .1s;
   }
 }
+
+.btn-pink {
+  background-color: #FC5185;
+  color: #fff;
+  padding: 4px 28px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.2em;
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover {
+    color: #fff;
+    opacity: 0.6;
+    transition: .1s;
+  }
+}
+
+.btn-pink-stroke {
+  background-color: #fff;
+  color: #FC5185;
+  border: 1px solid #FC5185;
+  padding: 4px 28px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.2em;
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #FC5185;
+    color: #fff;
+    opacity: 0.6;
+    transition: .1s;
+  }
+}
