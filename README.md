@@ -2,12 +2,18 @@
 
 First, if you don't have the Docker installed, you can do it clicking [here](https://www.docker.com/products/docker-desktop/) - to open in a new tab, press CMD(Mac) or CTRL(Win) and click - download and install it. We'll need it to go further.
 
-If your Operational System is Windows and you're using Linux on a Virtual Machine you have to open the terminal, follow the instructions in the link bellow.
-https://docs.docker.com/engine/install/ubuntu/
-Copy and paste the commands, and in the end if you see the message "Hello From Docker!" apparently, Docker was successfully installed.
-After it you can follow the steps bellow.
 
-While you wait the download, let's create some aliases to help you with most repetitive commands
+After it you can go to your "dotfiles" folder
+Change the GITHUB_USERNAME for your username
+It will probably open your code editor (Ex: Visual Studio Code/Sublime Text...etc)
+
+```bash
+code ~/code/GITHUB_USERNAME/dotfiles/zhsrc
+```
+
+Let's create some aliases to help you with most repetitive commands.
+Copy and Paste at the end of your zhsrc file
+
 ```bash
 asta() {
     docker compose exec -it web sh -c "$*"
@@ -19,6 +25,11 @@ alias ownership='sudo chown -R $USER:$USER .' # run it if you see a permission d
 alias app-init='sh init.sh' # run to create the enviroment
 alias app-start='sh start.sh' #  run every time you want to start the app.
                               # It will run migrations and gem or packege instalations
+```
+
+After you need to reload your terminal:
+```bash
+exec zsh
 ```
 
 To run commands inside your container, you can run `asta`, and the command at the end.
