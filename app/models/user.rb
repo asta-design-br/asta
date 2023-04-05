@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   # validates_associated :user_roles, presence: true
 
-  validates :full_name, :username, presence: true
+  validates :full_name, :username, :user_roles, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :profile, length: { within: 30..500 }
 
