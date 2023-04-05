@@ -56,28 +56,29 @@ producer_designer = User.create!(
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
-# ###############
+###############
 
-# puts 'assigning roles to users...'
-# UserRole.create!(
-#   user: designer,
-#   role: Role.first
-# )
+puts 'assigning roles to users...'
+UserRole.create!(
+  user: designer,
+  role: Role.first
+)
 
-# UserRole.create!(
-#   user: producer,
-#   role: Role.second
-# )
+puts 'assigning roles to users...'
+UserRole.create!(
+  user: designer,
+  role: Role.first
+)
 
-# UserRole.create!(
-#   user: producer_designer,
-#   role: Role.first
-# )
+UserRole.create!(
+  user: producer,
+  role: Role.second
+)
 
-# UserRole.create!(
-#   user: producer_designer,
-#   role: Role.second
-# )
+UserRole.create!(
+  user: producer_designer,
+  role: Role.first
+)
 
 ###############
 
@@ -134,16 +135,15 @@ Phone.create!(
 
 puts 'creating events...'
 event1 = Event.create!(
-  user: producer_designer,
+  user: designer,
   title: 'Meu primeiro freela',
   description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
   start_time: DateTime.new(2023, 5, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
-puts 'creating event...'
 event2 = Event.create!(
-  user: producer,
+  user: producer_designer,
   title: 'Inteligência ARTE-ficial',
   description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
   start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
@@ -194,30 +194,23 @@ product1 = Product.create!(
   name: 'Mussum Flyer',
   description: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
   Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
-  product_format: 'audio',
-  pixels_height: nil,
-  pixels_width: nil,
-  mm_height: nil,
-  mm_width: nil,
-  milliseconds_length: 2,
-  required_time: 5,
-  category: 'audio'
+  product_format: 'printed',
+  mm_height: 5,
+  mm_width: 3,
+  required_time: 15,
+  category: 'flyer'
 )
 
-puts 'creating product...'
 product2 = Product.create!(
   event: event2,
-  name: 'Didi Flyer',
+  name: 'Didi Digital Poster',
   description: 'Didi Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
   Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
-  product_format: 'audio',
-  pixels_height: nil,
-  pixels_width: nil,
-  mm_height: nil,
-  mm_width: nil,
-  milliseconds_length: 2000,
+  product_format: 'digital',
+  mm_height: 8,
+  mm_width: 8,
   required_time: 10,
-  category: 'audio'
+  category: 'poster'
 )
 
 product3 = Product.create!(
@@ -238,7 +231,6 @@ auction1 = Auction.create!(
   deadline: product1.event.start_time - 1.hour
 )
 
-puts 'creating auction...'
 auction2 = Auction.create!(
   product: product2,
   deadline: product2.event.start_time - 1.hour
@@ -253,14 +245,18 @@ auction3 = Auction.create!(
 
 puts 'creating bids...'
 Bid.create!(
-  user: designer,
+  user: producer_designer,
   auction: auction1
 )
 
-puts 'creating bid...'
+Bid.create!(
+  user: producer_designer,
+  auction: auction2
+)
+
 Bid.create!(
   user: designer,
-  auction: auction2
+  auction: auction3
 )
 
 puts 'Fim'

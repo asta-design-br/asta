@@ -1,8 +1,9 @@
 class Event < ApplicationRecord
+  include AstaAddressable
+  include Phonable
+
   belongs_to :user
-  has_many :products
-  has_many :addresses, as: :asta_addressable
-  has_many :phones, as: :phonable
+  has_many :products, dependent: :destroy
   has_many_attached :visual_references
 
   # validates_associated :user
