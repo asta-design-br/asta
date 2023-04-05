@@ -6,26 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# puts 'destroying every User Roles'
-# UserRole.destroy_all
-
-# puts 'destroying every Address'
-# Address.destroy_all
-
 puts 'destroying every Role'
 Role.destroy_all
 
 puts 'destroying every User'
 User.destroy_all
 
-# puts 'destroying every Event'
-# Event.destroy_all
-
-# puts 'destroying every Bid'
-# Bid.destroy_all
-
-# puts 'destroying every Auction'
-# Auction.destroy_all
+####
 
 puts 'creating roles...'
 %w[designer producer].each do |role|
