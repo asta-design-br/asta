@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+<<<<<<< Updated upstream
 puts 'destroying every Products'
 Product.destroy_all
 
@@ -15,12 +16,15 @@ UserRole.destroy_all
 puts 'destroying every Address'
 Address.destroy_all
 
+=======
+>>>>>>> Stashed changes
 puts 'destroying every Role'
 Role.destroy_all
 
 puts 'destroying every User'
 User.destroy_all
 
+<<<<<<< Updated upstream
 puts 'destroying every Event'
 Event.destroy_all
 
@@ -29,6 +33,9 @@ Bid.destroy_all
 
 puts 'destroying every Auction'
 Auction.destroy_all
+=======
+###############
+>>>>>>> Stashed changes
 
 puts 'creating roles...'
 %w[designer producer].each do |role|
@@ -37,6 +44,11 @@ puts 'creating roles...'
   )
 end
 
+<<<<<<< Updated upstream
+=======
+###############
+
+>>>>>>> Stashed changes
 puts 'creating users...'
 designer = User.create!(
   email: 'designer@test.com',
@@ -47,7 +59,8 @@ designer = User.create!(
   Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
   Mé faiz elementum girarzis, nisi eros vermeio.
   Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
-  document: '023729341-20'
+  document: '023729341-20',
+  # user_role: UserRole.create!(user: ?, role: Role.first)
 )
 
 producer = User.create!(
@@ -55,7 +68,9 @@ producer = User.create!(
   password: '123456',
   username: 'producer',
   full_name: 'Testador Producer',
-  profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
+  profile: 'Teste teste teste teste teste teste teste teste teste teste teste',
+  role: 'producer',
+  # user_role: UserRole.create!(role: Role.second)
 )
 
 producer_designer = User.create!(
@@ -66,28 +81,44 @@ producer_designer = User.create!(
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
+<<<<<<< Updated upstream
 puts 'assigning roles to users...'
 UserRole.create!(
   user: designer,
   role: Role.first
 )
+=======
+# ###############
 
-UserRole.create!(
-  user: producer,
-  role: Role.second
-)
+# puts 'assigning roles to users...'
+# UserRole.create!(
+#   user: designer,
+#   role: Role.first
+# )
+>>>>>>> Stashed changes
 
-UserRole.create!(
-  user: producer_designer,
-  role: Role.first
-)
+# UserRole.create!(
+#   user: producer,
+#   role: Role.second
+# )
 
-UserRole.create!(
-  user: producer_designer,
-  role: Role.second
-)
+# UserRole.create!(
+#   user: producer_designer,
+#   role: Role.first
+# )
 
+# UserRole.create!(
+#   user: producer_designer,
+#   role: Role.second
+# )
+
+<<<<<<< Updated upstream
 puts 'creating addresses...'
+=======
+###############
+
+puts 'creating addresses to users...'
+>>>>>>> Stashed changes
 Address.create!(
   street: 'Rua SB-36 qd. 49 lt. 05',
   number: 's/n',
@@ -106,7 +137,22 @@ Address.create!(
   asta_addressable: producer
 )
 
+<<<<<<< Updated upstream
 puts 'creating phone numbers...'
+=======
+Address.create!(
+  street: 'Rua  Manoel Dutra',
+  number: '595',
+  neighborhood: 'Bela Vista',
+  city: 'São Paulo',
+  state: 'SP',
+  asta_addressable: producer_designer
+)
+
+###############
+
+puts 'creating phone numbers to users...'
+>>>>>>> Stashed changes
 Phone.create!(
   country_code: '+55',
   number: '62984279962',
@@ -119,7 +165,19 @@ Phone.create!(
   phonable: producer
 )
 
+<<<<<<< Updated upstream
 puts 'creating event...'
+=======
+Phone.create!(
+  country_code: '+55',
+  number: '(11)84240330',
+  phonable: producer_designer
+)
+
+###############
+
+puts 'creating events...'
+>>>>>>> Stashed changes
 event1 = Event.create!(
   user: producer_designer,
   title: 'Meu primeiro freela',
@@ -137,7 +195,49 @@ event2 = Event.create!(
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
+<<<<<<< Updated upstream
 puts 'creating product...'
+=======
+###############
+
+puts 'creating addresses to events...'
+Address.create!(
+  street: 'Av. 85',
+  number: '584',
+  neighborhood: 'Setor Marista',
+  city: 'Goiânia',
+  state: 'GO',
+  asta_addressable: event1
+)
+
+Address.create!(
+  street: 'Av. Paulista',
+  number: '900',
+  neighborhood: 'Bela Vista',
+  city: 'São Paulo',
+  state: 'SP',
+  asta_addressable: event2
+)
+
+###############
+
+puts 'creating phone numbers to events...'
+Phone.create!(
+  country_code: '+55',
+  number: '(11)984279999',
+  phonable: event1
+)
+
+Phone.create!(
+  country_code: '+55',
+  number: '48996860333',
+  phonable: event2
+)
+
+###############
+
+puts 'creating products...'
+>>>>>>> Stashed changes
 product1 = Product.create!(
   event: event1,
   name: 'Mussum Flyer',
@@ -169,7 +269,23 @@ product2 = Product.create!(
   category: 'audio'
 )
 
+<<<<<<< Updated upstream
 puts 'creating auction...'
+=======
+product3 = Product.create!(
+  event: event2,
+  name: 'Didi Digital Video',
+  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  product_format: 'video',
+  milliseconds_length: 90,
+  required_time: 23,
+  category: 'video'
+)
+
+###############
+
+puts 'creating auctions...'
+>>>>>>> Stashed changes
 auction1 = Auction.create!(
   product: product1,
   deadline: product1.event.start_time - 1.hour
@@ -181,7 +297,18 @@ auction2 = Auction.create!(
   deadline: product2.event.start_time - 1.hour
 )
 
+<<<<<<< Updated upstream
 puts 'creating bid...'
+=======
+auction3 = Auction.create!(
+  product: product3,
+  deadline: product3.event.start_time - 1.hour
+)
+
+###############
+
+puts 'creating bids...'
+>>>>>>> Stashed changes
 Bid.create!(
   user: designer,
   auction: auction1
