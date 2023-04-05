@@ -34,6 +34,7 @@ designer = User.create!(
   Mé faiz elementum girarzis, nisi eros vermeio.
   Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
   document: '023729341-20',
+  role: 'designer'
   # user_role: UserRole.create!(user: ?, role: Role.first)
 )
 
