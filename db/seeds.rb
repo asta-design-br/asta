@@ -6,36 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-<<<<<<< Updated upstream
-puts 'destroying every Products'
-Product.destroy_all
-
-puts 'destroying every User Roles'
-UserRole.destroy_all
-
-puts 'destroying every Address'
-Address.destroy_all
-
-=======
->>>>>>> Stashed changes
 puts 'destroying every Role'
 Role.destroy_all
 
 puts 'destroying every User'
 User.destroy_all
 
-<<<<<<< Updated upstream
-puts 'destroying every Event'
-Event.destroy_all
-
-puts 'destroying every Bid'
-Bid.destroy_all
-
-puts 'destroying every Auction'
-Auction.destroy_all
-=======
 ###############
->>>>>>> Stashed changes
 
 puts 'creating roles...'
 %w[designer producer].each do |role|
@@ -44,11 +21,8 @@ puts 'creating roles...'
   )
 end
 
-<<<<<<< Updated upstream
-=======
 ###############
 
->>>>>>> Stashed changes
 puts 'creating users...'
 designer = User.create!(
   email: 'designer@test.com',
@@ -81,13 +55,6 @@ producer_designer = User.create!(
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
-<<<<<<< Updated upstream
-puts 'assigning roles to users...'
-UserRole.create!(
-  user: designer,
-  role: Role.first
-)
-=======
 # ###############
 
 # puts 'assigning roles to users...'
@@ -95,7 +62,6 @@ UserRole.create!(
 #   user: designer,
 #   role: Role.first
 # )
->>>>>>> Stashed changes
 
 # UserRole.create!(
 #   user: producer,
@@ -112,13 +78,9 @@ UserRole.create!(
 #   role: Role.second
 # )
 
-<<<<<<< Updated upstream
-puts 'creating addresses...'
-=======
 ###############
 
 puts 'creating addresses to users...'
->>>>>>> Stashed changes
 Address.create!(
   street: 'Rua SB-36 qd. 49 lt. 05',
   number: 's/n',
@@ -137,9 +99,6 @@ Address.create!(
   asta_addressable: producer
 )
 
-<<<<<<< Updated upstream
-puts 'creating phone numbers...'
-=======
 Address.create!(
   street: 'Rua  Manoel Dutra',
   number: '595',
@@ -152,7 +111,6 @@ Address.create!(
 ###############
 
 puts 'creating phone numbers to users...'
->>>>>>> Stashed changes
 Phone.create!(
   country_code: '+55',
   number: '62984279962',
@@ -165,9 +123,6 @@ Phone.create!(
   phonable: producer
 )
 
-<<<<<<< Updated upstream
-puts 'creating event...'
-=======
 Phone.create!(
   country_code: '+55',
   number: '(11)84240330',
@@ -177,7 +132,6 @@ Phone.create!(
 ###############
 
 puts 'creating events...'
->>>>>>> Stashed changes
 event1 = Event.create!(
   user: producer_designer,
   title: 'Meu primeiro freela',
@@ -195,9 +149,6 @@ event2 = Event.create!(
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
-<<<<<<< Updated upstream
-puts 'creating product...'
-=======
 ###############
 
 puts 'creating addresses to events...'
@@ -237,7 +188,6 @@ Phone.create!(
 ###############
 
 puts 'creating products...'
->>>>>>> Stashed changes
 product1 = Product.create!(
   event: event1,
   name: 'Mussum Flyer',
@@ -269,9 +219,6 @@ product2 = Product.create!(
   category: 'audio'
 )
 
-<<<<<<< Updated upstream
-puts 'creating auction...'
-=======
 product3 = Product.create!(
   event: event2,
   name: 'Didi Digital Video',
@@ -285,7 +232,6 @@ product3 = Product.create!(
 ###############
 
 puts 'creating auctions...'
->>>>>>> Stashed changes
 auction1 = Auction.create!(
   product: product1,
   deadline: product1.event.start_time - 1.hour
@@ -297,9 +243,6 @@ auction2 = Auction.create!(
   deadline: product2.event.start_time - 1.hour
 )
 
-<<<<<<< Updated upstream
-puts 'creating bid...'
-=======
 auction3 = Auction.create!(
   product: product3,
   deadline: product3.event.start_time - 1.hour
@@ -308,7 +251,6 @@ auction3 = Auction.create!(
 ###############
 
 puts 'creating bids...'
->>>>>>> Stashed changes
 Bid.create!(
   user: designer,
   auction: auction1

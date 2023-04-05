@@ -1,15 +1,12 @@
 class User < ApplicationRecord
   include AstaAddressable
-  # include Phonable
+  include Phonable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-<<<<<<< Updated upstream
-  validates :full_name, :username, presence: true
-=======
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
   has_many :events, dependent: :destroy
@@ -18,7 +15,6 @@ class User < ApplicationRecord
   # validates_associated :user_roles, presence: true
 
   validates :roles, :full_name, :username, presence: true
->>>>>>> Stashed changes
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :profile, length: { within: 30..500 }
 
