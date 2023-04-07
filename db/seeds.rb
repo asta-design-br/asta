@@ -6,29 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts 'destroying every Products'
-Product.destroy_all
-
-puts 'destroying every User Roles'
-UserRole.destroy_all
-
-puts 'destroying every Address'
-Address.destroy_all
-
 puts 'destroying every Role'
 Role.destroy_all
 
 puts 'destroying every User'
 User.destroy_all
 
-puts 'destroying every Event'
-Event.destroy_all
-
-puts 'destroying every Bid'
-Bid.destroy_all
-
-puts 'destroying every Auction'
-Auction.destroy_all
+####
 
 puts 'creating roles...'
 %w[designer producer].each do |role|
@@ -36,6 +20,8 @@ puts 'creating roles...'
     name: role
   )
 end
+
+####
 
 puts 'creating users...'
 designer = User.create!(
@@ -66,6 +52,8 @@ producer_designer = User.create!(
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
+####
+
 puts 'assigning roles to users...'
 UserRole.create!(
   user: designer,
@@ -87,7 +75,9 @@ UserRole.create!(
   role: Role.second
 )
 
-puts 'creating addresses...'
+####
+
+puts 'creating addresses to users...'
 Address.create!(
   street: 'Rua SB-36 qd. 49 lt. 05',
   number: 's/n',
@@ -106,7 +96,18 @@ Address.create!(
   asta_addressable: producer
 )
 
-puts 'creating phone numbers...'
+Address.create!(
+  street: 'Rua  Manoel Dutra',
+  number: '595',
+  neighborhood: 'Bela Vista',
+  city: 'São Paulo',
+  state: 'SP',
+  asta_addressable: producer_designer
+)
+
+####
+
+puts 'creating phone numbers to users...'
 Phone.create!(
   country_code: '+55',
   number: '62984279962',
@@ -119,78 +120,159 @@ Phone.create!(
   phonable: producer
 )
 
-puts 'creating event...'
+Phone.create!(
+  country_code: '+55',
+  number: '(11)84240330',
+  phonable: producer_designer
+)
+
+####
+
+puts 'creating events...'
 event1 = Event.create!(
-  user: producer_designer,
+  user: designer,
   title: 'Meu primeiro freela',
   description: 'Criar a arte visual da Babilonia Feira hype de Ipanema',
   start_time: DateTime.new(2023, 5, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
-puts 'creating event...'
 event2 = Event.create!(
-  user: producer,
+  user: producer_designer,
   title: 'Inteligência ARTE-ficial',
   description: 'Mix de arte humana com robô - A criatividade em foco no mundo moderno',
   start_time: DateTime.new(2023, 7, 1, 10, 30, 0),
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
-puts 'creating product...'
+####
+
+puts 'creating addresses to events...'
+Address.create!(
+  street: 'Av. 85',
+  number: '584',
+  neighborhood: 'Setor Marista',
+  city: 'Goiânia',
+  state: 'GO',
+  asta_addressable: event1
+)
+
+Address.create!(
+  street: 'Av. Paulista',
+  number: '900',
+  neighborhood: 'Bela Vista',
+  city: 'São Paulo',
+  state: 'SP',
+  asta_addressable: event2
+)
+
+####
+
+puts 'creating phone numbers to events...'
+Phone.create!(
+  country_code: '+55',
+  number: '(11)984279999',
+  phonable: event1
+)
+
+Phone.create!(
+  country_code: '+55',
+  number: '48996860333',
+  phonable: event2
+)
+
+####
+
+puts 'creating products...'
 product1 = Product.create!(
   event: event1,
   name: 'Mussum Flyer',
   description: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
   Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
-  product_format: 'audio',
-  pixels_height: nil,
-  pixels_width: nil,
-  mm_height: nil,
-  mm_width: nil,
-  milliseconds_length: 2,
-  required_time: 5,
-  category: 'audio'
+  product_format: 'printed',
+  mm_height: 5,
+  mm_width: 3,
+  required_time: 15,
+  category: 'flyer'
 )
 
-puts 'creating product...'
 product2 = Product.create!(
   event: event2,
-  name: 'Didi Flyer',
+  name: 'Didi Digital Poster',
   description: 'Didi Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.
   Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose.',
-  product_format: 'audio',
-  pixels_height: nil,
-  pixels_width: nil,
-  mm_height: nil,
-  mm_width: nil,
-  milliseconds_length: 2000,
+  product_format: 'digital',
+  mm_height: 8,
+  mm_width: 8,
   required_time: 10,
-  category: 'audio'
+  category: 'poster'
 )
 
-puts 'creating auction...'
+product3 = Product.create!(
+  event: event2,
+  name: 'Didi Digital Video',
+  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  product_format: 'video',
+  milliseconds_length: 90,
+  required_time: 23,
+  category: 'video'
+)
+
+####
+
+puts 'creating auctions...'
 auction1 = Auction.create!(
   product: product1,
   deadline: product1.event.start_time - 1.hour
 )
 
-puts 'creating auction...'
 auction2 = Auction.create!(
   product: product2,
   deadline: product2.event.start_time - 1.hour
 )
 
-puts 'creating bid...'
-Bid.create!(
-  user: designer,
+auction3 = Auction.create!(
+  product: product3,
+  deadline: product3.event.start_time - 1.hour
+)
+
+####
+
+puts 'creating bids...'
+bid1 = Bid.create!(
+  user: producer_designer,
   auction: auction1
 )
 
-puts 'creating bid...'
-Bid.create!(
-  user: designer,
+bid2 = Bid.create!(
+  user: producer_designer,
   auction: auction2
+)
+
+bid3 = Bid.create!(
+  user: designer,
+  auction: auction3
+)
+
+####
+
+puts 'creating steps for the Bid 1...'
+step1 = Step.create!(
+  bid: bid1,
+  title: 'Step 1',
+  due_date: bid1.auction.deadline - 1.day,
+  sequence_id: 0,
+  price_cents: 100,
+  notes: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.'
+)
+
+step2 = Step.create!(
+  bid: bid1,
+  title: 'Step 2',
+  due_date: bid1.auction.deadline - 12.hour,
+  sequence_id: 1,
+  price_cents: 10,
+  notes: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.'
 )
 
 puts 'Fim'

@@ -7,16 +7,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :user_roles, dependent: :destroy
+  has_many :roles, through: :user_roles
+  has_many :events, dependent: :destroy
+  has_many :bids, dependent: :destroy
+
   validates :full_name, :username, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :profile, length: { within: 30..500 }
 
   validate :check_full_name, :check_username, :check_document
-
-  has_many :user_roles, dependent: :destroy
-  has_many :roles, through: :user_roles
-  has_many :events, dependent: :destroy
-  has_many :bids, dependent: :destroy
 
   private
 
