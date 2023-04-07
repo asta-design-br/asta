@@ -211,7 +211,8 @@ product2 = Product.create!(
 product3 = Product.create!(
   event: event2,
   name: 'Didi Digital Video',
-  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
+  description: 'Sed non ipsum felis.Sapien in monti palavris qui num significa nadis i pareci latim.
+  Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. Sed non consequat odio.',
   product_format: 'video',
   milliseconds_length: 90,
   required_time: 23,
@@ -244,12 +245,12 @@ bid1 = Bid.create!(
   auction: auction1
 )
 
-bid2 = Bid.create!(
+Bid.create!(
   user: producer_designer,
   auction: auction2
 )
 
-bid3 = Bid.create!(
+Bid.create!(
   user: designer,
   auction: auction3
 )
@@ -257,7 +258,7 @@ bid3 = Bid.create!(
 ####
 
 puts 'creating steps for the Bid 1...'
-step1 = Step.create!(
+Step.create!(
   bid: bid1,
   title: 'Step 1',
   due_date: bid1.auction.deadline - 1.day,
@@ -266,7 +267,7 @@ step1 = Step.create!(
   notes: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.'
 )
 
-step2 = Step.create!(
+Step.create!(
   bid: bid1,
   title: 'Step 2',
   due_date: bid1.auction.deadline - 12.hour,
