@@ -16,11 +16,11 @@
                 input_html: { autocomplete: "username" } %>
     <%= f.input :profile,
                 required: true %>
-    <%= f.fields_for :user_role do |ur| %>
+<%= f.fields_for :user_role do |ur| %>
       <%= ur.input :id,
                   label: "roles",
                   collection: Role.all,
-                  required: true, 
+                  required: true,
                   input_html: { multiple: true, class: "#{'is-invalid' if resource.errors[:role].any?}" } %>
     <% end %>
     <%= content_tag :div, resource.errors[:role].first, class: "asta-invalid-feedback" if resource.errors[:role].any? %>
