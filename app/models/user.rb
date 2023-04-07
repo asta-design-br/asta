@@ -12,9 +12,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :bids, dependent: :destroy
 
-  # validates_associated :user_roles, presence: true
-
-  validates :full_name, :username, :user_roles, presence: true
+  validates :full_name, :username, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :profile, length: { within: 30..500 }
 

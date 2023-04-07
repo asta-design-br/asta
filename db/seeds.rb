@@ -33,9 +33,7 @@ designer = User.create!(
   Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
   Mé faiz elementum girarzis, nisi eros vermeio.
   Mais vale um bebadis conhecidiss, que um alcoolatra anonimis.',
-  document: '023729341-20',
-  # role: 'designer'
-  user_role: UserRole.create!(role: Role.first) #mas como passar o user que esta sendo criado como paramentro?
+  document: '023729341-20'
 )
 
 producer = User.create!(
@@ -44,8 +42,6 @@ producer = User.create!(
   username: 'producer',
   full_name: 'Testador Producer',
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste',
-  # role: 'producer',
-  # user_role: UserRole.create!(role: Role.second)
 )
 
 producer_designer = User.create!(
