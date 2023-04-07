@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_28_191201) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_01_134305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -120,6 +120,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_191201) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "steps", force: :cascade do |t|
+    t.bigint "bid_id", null: false
+    t.integer "sequence_id"
+    t.string "title"
+    t.text "notes"
+    t.integer "price_cents"
+    t.datetime "due_date"
+    t.boolean "approved"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bid_id"], name: "index_steps_on_bid_id"
+  end
+
   create_table "user_roles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "role_id", null: false
@@ -152,6 +165,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_28_191201) do
   add_foreign_key "bids", "users"
   add_foreign_key "events", "users"
   add_foreign_key "products", "events"
+  add_foreign_key "steps", "bids"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

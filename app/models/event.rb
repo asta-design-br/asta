@@ -4,6 +4,8 @@ class Event < ApplicationRecord
 
   belongs_to :user
   has_many :products, dependent: :destroy
+  has_many :addresses, as: :asta_addressable, dependent: :destroy
+  has_many :phones, as: :phonable, dependent: :destroy
   has_many_attached :visual_references
 
   validates :title, :description, :start_time, :end_time, presence: true

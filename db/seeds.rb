@@ -239,19 +239,40 @@ auction3 = Auction.create!(
 ####
 
 puts 'creating bids...'
-Bid.create!(
+bid1 = Bid.create!(
   user: producer_designer,
   auction: auction1
 )
 
-Bid.create!(
+bid2 = Bid.create!(
   user: producer_designer,
   auction: auction2
 )
 
-Bid.create!(
+bid3 = Bid.create!(
   user: designer,
   auction: auction3
+)
+
+####
+
+puts 'creating steps for the Bid 1...'
+step1 = Step.create!(
+  bid: bid1,
+  title: 'Step 1',
+  due_date: bid1.auction.deadline - 1.day,
+  sequence_id: 0,
+  price_cents: 100,
+  notes: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.'
+)
+
+step2 = Step.create!(
+  bid: bid1,
+  title: 'Step 2',
+  due_date: bid1.auction.deadline - 12.hour,
+  sequence_id: 1,
+  price_cents: 10,
+  notes: 'Mussum Ipsum, cacilds vidis litro abertis.Paisis, filhis, espiritis santis.'
 )
 
 puts 'Fim'
