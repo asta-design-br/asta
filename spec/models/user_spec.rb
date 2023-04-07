@@ -1,5 +1,8 @@
 require 'rails_helper'
+require Rails.root.join 'spec/support/concerns/phonable_examples.rb'
+require Rails.root.join 'spec/support/concerns/asta_addressable_examples.rb'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe User, type: :model do
   context 'validations' do
     before(:each) do
@@ -75,14 +78,11 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
       expect(@user.errors[:document]).to include('should be a CPF or CNPJ valid number.')
     end
-
   end
 
-  # context 'concerns' do
-  #   it_behaves_like 'phonable'
-  # end
-
-  # context 'concerns' do
-  #   it_behaves_like 'asta_addressable'
-  # end
+  context 'concerns' do
+    it_behaves_like 'phonable'
+    it_behaves_like 'asta_addressable'
+  end
 end
+# rubocop:enable Metrics/BlockLength

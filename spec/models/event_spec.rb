@@ -1,5 +1,8 @@
 require 'rails_helper'
+require Rails.root.join 'spec/support/concerns/phonable_examples.rb'
+require Rails.root.join 'spec/support/concerns/asta_addressable_examples.rb'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Event, type: :model do
   context 'validations' do
     before(:each) do
@@ -47,4 +50,10 @@ RSpec.describe Event, type: :model do
       expect(@event.errors[:end_time]).to include('can\'t be before start time')
     end
   end
+
+  context 'concerns' do
+    it_behaves_like 'phonable'
+    it_behaves_like 'asta_addressable'
+  end
 end
+# rubocop:enable Metrics/BlockLength
