@@ -43,8 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_01_134305) do
   end
 
   create_table "addresses", force: :cascade do |t|
-    t.string "asta_addressable_type", null: false
-    t.bigint "asta_addressable_id", null: false
     t.string "street"
     t.string "number"
     t.string "complement"
@@ -55,7 +53,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_01_134305) do
     t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["asta_addressable_type", "asta_addressable_id"], name: "index_addresses_on_addressable"
+    t.string "asta_addressable_type", null: false
+    t.bigint "asta_addressable_id", null: false
+    t.index ["asta_addressable_type", "asta_addressable_id"], name: "index_addresses_on_asta_addressable"
   end
 
   create_table "auctions", force: :cascade do |t|

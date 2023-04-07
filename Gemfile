@@ -71,8 +71,8 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'awesome_print'
 
 # Dependabot vulnerabilities solvers
-gem "rack", ">= 2.2.6.4"
-gem "activesupport", ">= 7.0.4.3"
+gem 'activesupport', '>= 7.0.4.3'
+gem 'rack', '>= 2.2.6.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

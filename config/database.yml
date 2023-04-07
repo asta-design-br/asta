@@ -29,13 +29,13 @@ default: &default
 
 development:
   <<: *default
-  # database: personal_stock_wallet_development
+  # database: asta_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: personal_stock_wallet
+  #username: asta
 
   # The password associated with the postgres role (username).
   #password:
