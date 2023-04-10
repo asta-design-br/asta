@@ -27,7 +27,7 @@ module User
       return unless current_user
 
       @roles.each do |role|
-        UserRole.create!(user: current_user, role: role)
+        UserRole.create!(user: current_user, role:)
       end
     end
 

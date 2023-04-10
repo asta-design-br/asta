@@ -41,7 +41,7 @@ producer = User.create!(
   password: '123456',
   username: 'producer',
   full_name: 'Testador Producer',
-  profile: 'Teste teste teste teste teste teste teste teste teste teste teste',
+  profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
 producer_designer = User.create!(
