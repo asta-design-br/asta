@@ -2,7 +2,7 @@
 
 First, if you don't have the Docker installed, you can do it clicking [here](https://www.docker.com/products/docker-desktop/) - to open in a new tab, press CMD(Mac) or CTRL(Win) and click - download and install it. We'll need it to go further.
 
-If you're using Linux in a Virtual Machine don't worry, you can download it for Windows and enable it for Linux in the Setup.
+If you're using Linux in a Virtual Machine don't worry, you can download it for Windows and enable it for Linux in the Setup
 
 After it you can go to your "dotfiles" folder
 Change the GITHUB_USERNAME for your username
