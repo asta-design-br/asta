@@ -25,7 +25,7 @@ RSpec.describe Phone, type: :model do
     it 'should have a phonable associated' do
       @phone.phonable = nil
       expect(@phone).to_not be_valid
-      expect(@phone.errors[:phonable]).to include("must exist")
+      expect(@phone.errors[:phonable]).to include('must exist')
     end
   end
 end

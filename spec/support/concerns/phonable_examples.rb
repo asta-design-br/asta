@@ -6,8 +6,7 @@ shared_examples_for 'phonable' do
   it 'has many phones association' do
     phonable = FactoryBot.build(model.to_s.underscore.to_sym)
     expect { phonable.phones }.to_not raise_error(NoMethodError)
-    # Uncomment after Phone model is implemented
-    # expect(phonable.phones).to be_an(ActiveRecord::Relation)
+    expect(phonable.phones).to be_an(ActiveRecord::Relation)
     # expect(phonable.phones.first).to be_a(Phone)
   end
 end

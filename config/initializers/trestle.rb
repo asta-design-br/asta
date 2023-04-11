@@ -3,7 +3,7 @@ Trestle.configure do |config|
   #
   # Set the page title shown in the main header within the admin.
   #
-  config.site_title = "Asta"
+  config.site_title = 'Asta'
 
   # Specify a custom image to be used in place of the site title for mobile and
   # expanded/desktop navigation. These images should be placed within your
@@ -61,7 +61,8 @@ Trestle.configure do |config|
   #
   # config.menu do
   #   group "Custom Group" do
-  #     item "Custom Link", "/admin/custom", icon: "fa fa-car", badge: { text: "NEW!", class: "label-success" }, priority: :first
+  #     item "Custom Link", "/admin/custom", icon: "fa fa-car",
+  # badge: { text: "NEW!", class: "label-success" }, priority: :first
   #   end
   # end
 

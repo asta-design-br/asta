@@ -2,7 +2,19 @@
 
 First, if you don't have the Docker installed, you can do it clicking [here](https://www.docker.com/products/docker-desktop/) - to open in a new tab, press CMD(Mac) or CTRL(Win) and click - download and install it. We'll need it to go further.
 
-While you wait the download, let's create some aliases to help you with most repetitive commands
+If you're using Linux in a Virtual Machine don't worry, you can download it for Windows and enable it for Linux in the Setup
+
+After it you can go to your "dotfiles" folder
+Change the GITHUB_USERNAME for your username
+It will probably open your code editor (Ex: Visual Studio Code/Sublime Text...etc)
+
+```bash
+code ~/code/GITHUB_USERNAME/dotfiles/zhsrc
+```
+
+Let's create some aliases to help you with most repetitive commands.
+Copy and Paste at the end of your zhsrc file
+
 ```bash
 asta() {
     docker compose exec -it web sh -c "$*"
@@ -14,6 +26,11 @@ alias ownership='sudo chown -R $USER:$USER .' # run it if you see a permission d
 alias app-init='sh init.sh' # run to create the enviroment
 alias app-start='sh start.sh' #  run every time you want to start the app.
                               # It will run migrations and gem or packege instalations
+```
+
+After you need to reload your terminal:
+```bash
+exec zsh
 ```
 
 To run commands inside your container, you can run `asta`, and the command at the end.
@@ -29,7 +46,7 @@ asta yarn build --watch
 To run rails commands, you can run `rasta` and then the rails command. Just like this:
 ```
 rasta db:drop db:create db:migrate db:seed
-``` 
+```
 ```
 rasta c
 ```

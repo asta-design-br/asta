@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Address, type: :model do
   context 'validations' do
     before(:each) do
@@ -53,3 +54,4 @@ RSpec.describe Address, type: :model do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
