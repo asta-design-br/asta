@@ -18,21 +18,33 @@ body {
 
 /*Smallest device*/
 @media (min-width: 100px) and (max-width: 575px) {
+  .container {
+    max-width: 460px;
+  }
   .home {
     grid-template-columns: 1fr;
+    margin: 12px;
   }
 }
 
 /*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
+@media (min-width: 576px) and (max-width: 767px) {
+  .container {
+    max-width: 860px;
+  }
   .home {
     grid-template-columns: 1fr;
+    margin: 30px;
   }
 }
 
 /*Medium devices (tablets, 768px and up)*/
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
+  .container {
+    max-width: 1200px;
+  }
   .home {
     grid-template-columns: 1fr 1fr;
+    margin: 40px;
   }
 }
