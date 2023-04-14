@@ -111,3 +111,25 @@
     font-size: 0.9em;
   }
 }
+
+.card-login {
+  max-width: 670px;
+  min-height: 350px;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  border-radius: 4px;
+  padding: 3px 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  h2 {
+    color: #3FC1C9;
+  }
+
+  p {
+    color: #8E8E8E;
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+}

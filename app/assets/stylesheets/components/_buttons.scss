@@ -15,6 +15,23 @@
   }
 }
 
+.btn-blue-login {
+  background-color: #3FC1C9;
+  color: #fff;
+  padding: 4px 50px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.2em;
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover {
+    color: #fff;
+    opacity: 0.6;
+    transition: .1s;
+  }
+}
+
 .btn-pink {
   background-color: #FC5185;
   color: #fff;
