@@ -117,3 +117,22 @@
     font-size: 0.9em;
   }
 }
+
+.card-white {
+  width: 76vw;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.05);
+  border-radius: 4px;
+  padding: 80px 52px;
+  margin: 125px auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  p {
+    color: #8E8E8E;
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+
+}
