@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <h1 id="title-blue">Filtros</h1>
+  <div data-controller="product-search">
+    <form>
+      <h5>Produtos</h5>
+      <% Product::CATEGORIES.each do |category| %>
+        <input type="checkbox" id="<% category %>" name="<% category %>" value="<% category %>"/>
+          <label><%= category.capitalize %></label> <br>
+      <% end %>
+    </form>
+  </div>
+</div>
+
+<%# data-action="change->product-search#search" %>

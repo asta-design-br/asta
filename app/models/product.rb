@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  CATEGORIES = %w[flyer poster sticker backdrop audio video].freeze
   belongs_to :event
   has_many :auctions, dependent: :destroy
 
@@ -8,7 +9,7 @@ class Product < ApplicationRecord
   validates :product_format,
             inclusion: { in: %w[digital printed audio video], message: '%(value) is not a valid format.' }
   validates :category,
-            inclusion: { in: %w[flyer poster sticker backdrop audio video],
+            inclusion: { in: CATEGORIES,
                          message: '%(value) is not a valid category.' }
   validates :required_time, numericality: { only_integer: true, greater_than: 0, message: 'should be greater than 0.' }
 
@@ -94,5 +95,11 @@ class Product < ApplicationRecord
       :mm_height,
       'must have a positive millimeter height value.'
     )
+  end
+
+  def self.search(category)
+    return Product.where(category:) if category
+
+    Product.all
   end
 end
