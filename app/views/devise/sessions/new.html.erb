@@ -1,31 +1,52 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card-login">
-        <div class="card-body">
-          <h2>Login</h2>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6 card-login">
+        <h2>Login</h2>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-            <div class="form-inputs">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+              </div>
               <%= f.input :email,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" },
-                placeholder: "Email" %>
+                label: false,
+                input_html: {
+                  autocomplete: "email",
+                  class: "form-control",
+                  placeholder: "E-mail",
+                },
+                wrapper_html: {
+                  class: "col-md-11"
+                } %>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa-solid fa-user-secret"></i></span>
+              </div>
               <%= f.input :password,
                 required: false,
-                input_html: { autocomplete: "current-password" },
-                placeholder: "Senha" %>
+                label: false,
+                input_html: {
+                  autocomplete: "current-password",
+                  class: "form-control",
+                  placeholder: "Senha"
+                },
+                wrapper_html: {
+                  class: "col-md-11"
+                } %>
             </div>
             <div class="form-actions">
               <%= f.button :submit, "Entrar", class: "btn-blue-login" %>
             </div>
           <% end %>
+          <hr class= "m-3">
           <%= render "devise/shared/links" %>
-        </div>
       </div>
-    </div>
-    <div class="col-md-6 img-fluid">
-      <%= image_tag "undraw_login.svg" %>
+      <div class="col-md-6 img-fluid">
+        <%= image_tag "undraw_login.svg" %>
+      </div>
     </div>
   </div>
 </div>
