@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
-
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   # Define custom routes for choosing user role and signing up as a producer or designer
-
   devise_scope :user do
     get '/sign_up_choice', to: 'registrations#sign_up_choice', as: :sign_up_choice
   end

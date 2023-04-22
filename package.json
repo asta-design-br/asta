@@ -1,6 +1,15 @@
 {
   "dependencies": {
+    "@hotwired/turbo-rails": "^7.3.0",
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.3"
-  }
+    "@rails/webpacker": "5.4.4",
+    "bootstrap": "^5.2.3",
+    "stimulus": "^3.2.1",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3"
+  },
+  "start": "webpack-dev-server --host 0.0.0.0 --inline --content-base ."
 }
