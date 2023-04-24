@@ -12,7 +12,7 @@ Role.destroy_all
 puts 'destroying every User'
 User.destroy_all
 
-####
+###############
 
 puts 'creating roles...'
 %w[designer producer].each do |role|
@@ -21,7 +21,7 @@ puts 'creating roles...'
   )
 end
 
-####
+###############
 
 puts 'creating users...'
 designer = User.create!(
@@ -52,7 +52,13 @@ producer_designer = User.create!(
   profile: 'Teste teste teste teste teste teste teste teste teste teste teste'
 )
 
-####
+###############
+
+puts 'assigning roles to users...'
+UserRole.create!(
+  user: designer,
+  role: Role.first
+)
 
 puts 'assigning roles to users...'
 UserRole.create!(
@@ -70,12 +76,7 @@ UserRole.create!(
   role: Role.first
 )
 
-UserRole.create!(
-  user: producer_designer,
-  role: Role.second
-)
-
-####
+###############
 
 puts 'creating addresses to users...'
 Address.create!(
@@ -105,7 +106,7 @@ Address.create!(
   asta_addressable: producer_designer
 )
 
-####
+###############
 
 puts 'creating phone numbers to users...'
 Phone.create!(
@@ -126,7 +127,7 @@ Phone.create!(
   phonable: producer_designer
 )
 
-####
+###############
 
 puts 'creating events...'
 event1 = Event.create!(
@@ -145,7 +146,7 @@ event2 = Event.create!(
   end_time: DateTime.new(2023, 10, 1, 10, 30, 0)
 )
 
-####
+###############
 
 puts 'creating addresses to events...'
 Address.create!(
@@ -166,7 +167,7 @@ Address.create!(
   asta_addressable: event2
 )
 
-####
+###############
 
 puts 'creating phone numbers to events...'
 Phone.create!(
@@ -181,7 +182,7 @@ Phone.create!(
   phonable: event2
 )
 
-####
+###############
 
 puts 'creating products...'
 product1 = Product.create!(
@@ -219,7 +220,7 @@ product3 = Product.create!(
   category: 'video'
 )
 
-####
+###############
 
 puts 'creating auctions...'
 auction1 = Auction.create!(
@@ -237,7 +238,7 @@ auction3 = Auction.create!(
   deadline: product3.event.start_time - 1.hour
 )
 
-####
+###############
 
 puts 'creating bids...'
 bid1 = Bid.create!(

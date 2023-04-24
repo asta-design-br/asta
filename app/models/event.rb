@@ -8,6 +8,8 @@ class Event < ApplicationRecord
   has_many :phones, as: :phonable, dependent: :destroy
   has_many_attached :visual_references
 
+  # validates_associated :user
+
   validates :title, :description, :start_time, :end_time, presence: true
   validates :title, length: { maximum: 50, too_long: '%<count>s characters is the maximum allowed' }
   validates :description, length: { minimum: 50, too_short: 'is too short (minimum is %<count>s characters)' }
