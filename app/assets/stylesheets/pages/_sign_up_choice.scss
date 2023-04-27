@@ -6,9 +6,6 @@
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
-  .container {
-    max-width: 460px;
-  }
   .sign-up-choice-cards {
     grid-template-columns: 1fr;
   }
@@ -16,9 +13,6 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) and (max-width: 767px){
-  .container {
-    max-width: 860px;
-  }
   .sign-up-choice-cards {
     grid-template-columns: 1fr;
   }
@@ -26,9 +20,6 @@
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
-  .container {
-    max-width: 1200px;
-  }
   .sign-up-choice-cards {
     grid-template-columns: 1fr 1fr;
   }
