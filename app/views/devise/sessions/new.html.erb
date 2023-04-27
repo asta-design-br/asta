@@ -4,9 +4,9 @@
       <div class="col-md-6 card-login">
         <h2>Login</h2>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: :false }) do |f| %>
-            <div class="input-group mb-3">
+            <div class="input-group m-3">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                <span class="icon-inside"><i class="fas fa-envelope"></i></span>
               </div>
               <%= f.input :email,
                 required: false,
@@ -18,12 +18,12 @@
                   placeholder: "E-mail",
                 },
                 wrapper_html: {
-                  class: "col-md-11"
+                  class: "col-md-12"
                 } %>
             </div>
-            <div class="input-group mb-3">
+            <div class="input-group m-3">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa-solid fa-user-secret"></i></span>
+                <span class="icon-inside"><i class="fa-solid fa-user-secret"></i></span>
               </div>
               <%= f.input :password,
                 required: false,
@@ -34,14 +34,16 @@
                   placeholder: "Senha"
                 },
                 wrapper_html: {
-                  class: "col-md-11"
+                  class: "col-md-12"
                 } %>
             </div>
-            <div class="form-actions">
-              <%= f.button :submit, "Entrar", class: "btn-blue-login" %>
+            <div class="btn-blue-login m-3">
+              <%= f.button :submit, "Entrar" %>
             </div>
           <% end %>
-          <hr class= "m-3">
+          <div class="d-flex m-3">
+            <hr class="col-md-4"> <p class="col-md-4">ou</p> <hr class="col-md-4">
+          </div>
           <%= render "devise/shared/links" %>
       </div>
       <div class="col-md-6 img-fluid">

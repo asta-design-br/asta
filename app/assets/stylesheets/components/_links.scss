@@ -1,0 +1,31 @@
+.pass-link a {
+  color: #081b6e;
+  padding: 4px 28px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.2em;
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover {
+    color: #fff;
+    opacity: 0.6;
+    transition: .1s;
+  }
+}
+
+.signup-link a {
+  color: #3FC1C9;
+  padding: 4px 28px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1.2em;
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover {
+    color: #fff;
+    opacity: 0.6;
+    transition: .1s;
+  }
+}
